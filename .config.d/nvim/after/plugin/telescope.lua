@@ -1,8 +1,21 @@
+-- Telescope configuration
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>ps', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
-vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+local wk = require("which-key")
 
+-- Register telescope keybindings with which-key
+wk.register({
+    -- File search keybindings
+    ["<leader>pf"] = { builtin.find_files, "Find files" },
+    ["<C-p>"] = { builtin.git_files, "Git files" },
+    
+    -- Text search with grep
+    ["<leader>ps"] = { 
+        function() 
+            builtin.grep_string({ search = vim.fn.input("Grep > ") })
+        end,
+        "Grep search"
+    },
+    
+    -- Help tags search
+    ["<leader>vh"] = { builtin.help_tags, "Help tags" },
+}, { mode = "n" })
