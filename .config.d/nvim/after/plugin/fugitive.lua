@@ -25,15 +25,15 @@ autocmd("BufWinEnter", {
         -- Using which-key for buffer-local mappings
         local wk = require("which-key")
         wk.register({
-            ["<leader>p"] = { 
+            ["<leader>gp"] = { 
                 function() vim.cmd.Git('push') end, 
                 "Git Push" 
             },
-            ["<leader>P"] = { 
+            ["<leader>gP"] = { 
                 function() vim.cmd.Git({'pull', '--rebase'}) end,
                 "Git Pull (rebase)"
             },
-            ["<leader>t"] = { 
+            ["<leader>gt"] = { 
                 ":Git push -u origin ", 
                 "Push with tracking" 
             }

@@ -8,20 +8,12 @@ local wk = require("which-key") -- Load which-key for organized keybinding manag
 -- The leader key is a prefix for many custom commands
 vim.g.mapleader = " "
 
--- Legacy keymap commented out, now using which-key
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
 -- Add keybindings to which-key
 -- This organizes all keybindings by mode and provides descriptions
 wk.add({
     {
         mode = {"x"}, -- X mode (visual block)
-        {"<leader>p", [["_dP]], desc = "Paste without yanking deleted text"}, -- Preserves register content
-    },
-    {
-        mode = {"i"}, -- INSERT mode
-        {"<leader>p", [["_dP]], desc = "Special paste command"}, -- Special paste formatting
-        {"<C-c>", "<ESC>", desc = 'Exit to normal mode'}, -- Alternative to Escape key
+        {"<leader>pp", [["_dP]], desc = "Paste without yanking deleted text"}, -- Preserves register content
     },
     {
         mode = {"v"}, -- VISUAL mode (character-wise visual mode)
@@ -31,6 +23,7 @@ wk.add({
     },
     {
         mode = {"n"}, -- NORMAL mode
+        {"<leader>pv", vim.cmd.Ex, desc = "Toggle file explorer"}, -- Open netrw file explorer
         {"<leader>Y", [["+Y]], desc = "Yank line to system clipboard"}, -- Copy whole line to system clipboard
         {"Q", "<nop>", desc = "Disable Ex mode"}, -- Prevents accidental Ex mode activation
         {"<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", desc = "Open tmux sessionizer"}, -- Project navigation
@@ -65,7 +58,6 @@ wk.add({
         {[["_u]], desc = "Standard undo command"}, -- Undo last change
         {"<leader>u", desc = "Toggle undotree panel"}, -- Open undo history tree
         {"<leader>y", [["+y]], desc = "Yank to system clipboard"}, -- Copy to system clipboard
-        {"<leader>p", [["_dP]], desc = "Paste without yanking"}, -- Paste without changing register
         {"<leader>f", vim.lsp.buf.format, desc = "Format with LSP"}, -- Format using LSP
         {"<C-k>", "<cmd>cnext<CR>zz", desc = "Next quickfix item"}, -- Next quickfix item, centered
         {"<C-j>", "<cmd>cprev<CR>zz", desc = "Previous quickfix item"}, -- Previous quickfix item, centered

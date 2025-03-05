@@ -26,11 +26,13 @@ return require('packer').startup(function(use)
   -- Core: Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- Telescope: Fuzzy finder for files, buffers, and more
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.8',
 	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} } -- Plenary: Lua utility functions
+	  requires = {{'nvim-lua/plenary.nvim'}} -- Plenary: Lua utility functions
   }
 
   -- Tokyo Night: Modern dark theme with clean design and good contrast

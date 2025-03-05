@@ -10,6 +10,7 @@ brew 'difftastic'
 brew 'fd' # faster, colorized alternative to find
 brew 'fish' # my friendly shell
 brew 'fzf' # fuzzy finder that powers fzf.fish plugin
+brew 'fzf-make' # faster version of fzf (fzf-native) for vim telescope plugin
 brew 'go'
 brew 'jq' # cli json tool
 brew 'neovim'

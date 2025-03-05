@@ -16,6 +16,10 @@ echo "Setting up dotfiles for $OS..."
 
 # Create necessary directories
 mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.config/nvim"
+mkdir -p "$HOME/.config/fish"
+mkdir -p "$HOME/.config/tmux"
+mkdir -p "$HOME/.vim/undodir"  # Create undo directory for Neovim
 
 # Function to recursively create symlinks for files in a directory
 create_symlinks_recursive() {
@@ -42,6 +46,9 @@ create_symlinks_recursive() {
         fi
         
         if [ -f "$item" ]; then
+            # Create parent directory if it doesn't exist
+            mkdir -p "$(dirname "$target_item")"
+            
             # Create symlink for file
             ln -sf "$PWD/$source_dir/$item_name" "$target_item"
             echo "Symlinked: $current_rel_path"
@@ -56,6 +63,9 @@ create_symlinks_recursive() {
 create_symlinks() {
     echo "Creating symbolic links..."
     
+    # Create home directory if it doesn't exist (just in case)
+    mkdir -p "$HOME"
+    
     # Config files in root
     ln -sf "$PWD/.asdfrc" "$HOME/.asdfrc"
     ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
@@ -69,9 +79,28 @@ create_symlinks() {
         if [ -d "$dir" ]; then
             dirname=$(basename "$dir")
             target_dir="$HOME/.config/$dirname"
+            
+            # Ensure target directory exists
+            mkdir -p "$target_dir"
+            
             create_symlinks_recursive ".config/$dirname" "$target_dir" "$dirname"
         fi
     done
+    
+    # Process .config.d directories if they exist
+    if [ -d ".config.d" ]; then
+        for dir in .config.d/*; do
+            if [ -d "$dir" ]; then
+                dirname=$(basename "$dir")
+                target_dir="$HOME/.config/$dirname"
+                
+                # Ensure target directory exists
+                mkdir -p "$target_dir"
+                
+                create_symlinks_recursive ".config.d/$dirname" "$target_dir" "$dirname"
+            fi
+        done
+    fi
     
     echo "Symlinking complete."
 }
@@ -95,8 +124,12 @@ setup_macos() {
     fi
 
     # Install packages from Brewfile
-    echo "Installing packages from Brewfile..."
-    brew bundle install
+    if [ -f "Brewfile" ]; then
+        echo "Installing packages from Brewfile..."
+        brew bundle install
+    else
+        echo "Brewfile not found. Skipping package installation."
+    fi
 }
 
 # Linux specific setup
@@ -137,8 +170,23 @@ setup_linux() {
 setup_fish() {
     echo "Setting up fish shell..."
     
-    # Update and install plugins
-    fish -c "fisher update"
+    # Create fish config directories if they don't exist
+    mkdir -p "$HOME/.config/fish/functions"
+    mkdir -p "$HOME/.config/fish/completions"
+    mkdir -p "$HOME/.config/fish/conf.d"
+    
+    # Install Fisher if not already installed
+    if [ ! -f "$HOME/.config/fish/functions/fisher.fish" ]; then
+        echo "Installing Fisher plugin manager..."
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    fi
+    
+    # Update and install plugins if fish is available
+    if command -v fish >/dev/null 2>&1; then
+        fish -c "fisher update" || echo "Fisher update failed, continuing..."
+    else
+        echo "Fish shell not found. Please install it manually."
+    fi
 }
 
 # Main installation process
@@ -153,12 +201,16 @@ main() {
     setup_fish
 
     echo "Setting fish as default shell..."
-    if ! grep -q "$(command -v fish)" /etc/shells; then
-        command -v fish | sudo tee -a /etc/shells
+    if command -v fish >/dev/null 2>&1; then
+        if ! grep -q "$(command -v fish)" /etc/shells; then
+            command -v fish | sudo tee -a /etc/shells
+        fi
+        chsh -s "$(command -v fish)"
+    else
+        echo "Fish shell not installed. Please install it manually."
     fi
-    chsh -s "$(command -v fish)"
 
     echo "Installation complete! Please restart your terminal."
 }
 
-main 
+main

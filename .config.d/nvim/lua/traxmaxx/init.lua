@@ -7,13 +7,6 @@ require("traxmaxx.packer")
 require("traxmaxx.set")
 require("traxmaxx.remap")
 
--- Development-only paths - DO NOT INCLUDE IN PRODUCTION
--- These lines are commented out to prevent loading development tools
--- in normal usage environments
--- DO NOT INCLUDE THIS
--- vim.opt.rtp:append("~/personal/streamer-tools")
--- DO NOT INCLUDE THIS
-
 -- Create autocommand groups
 -- Autocommand groups allow organizing related autocommands together
 local augroup = vim.api.nvim_create_augroup
@@ -29,6 +22,14 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 -- Disable mouse interactions for keyboard-focused workflow
 vim.o.mouse = ''
+
+-- automatically run :PackerCompile whenever plugins.lua is updated
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 -- Utility function to reload a module during development
 -- Usage: R("module.name") will reload the specified module
