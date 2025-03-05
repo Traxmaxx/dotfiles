@@ -1,6 +1,7 @@
 [user]
-	email = ""
-	name = Traxmaxx
+    email = ""
+    name = Traxmaxx
+    signingkey = ""
 
 [core]
     excludesfile = ~/.gitignore_global
@@ -17,23 +18,20 @@
     ui = auto
 
 [mergetool]
-	keepBackup = trustExitCode
+    keepBackup = trustExitCode
 
 [alias]
     stats = shortlog -sn
     dft = difftool
 
 [diff]
-    tool = difftastic
-[difftool]
-    prompt = false
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
+    external = difft
+
 [pager]
     difftool = true
 
 
 [push]
-	default = current
+    default = current
 [commit]
-	gpgsign = false
+    gpgsign = false

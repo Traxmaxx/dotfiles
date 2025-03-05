@@ -57,9 +57,11 @@ create_symlinks() {
     echo "Creating symbolic links..."
     
     # Config files in root
+    ln -sf "$PWD/.asdfrc" "$HOME/.asdfrc"
+    ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
+    ln -sf "$PWD/.gitignore_global" "$HOME/.githelpers"
     ln -sf "$PWD/.gitignore_global" "$HOME/.gitignore_global"
     ln -sf "$PWD/.githelpers" "$HOME/.githelpers"
-    ln -sf "$PWD/.asdfrc" "$HOME/.asdfrc"
     ln -sf "$PWD/.tool-versions" "$HOME/.tool-versions"
 
     # Process each directory in .config
