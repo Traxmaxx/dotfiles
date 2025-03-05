@@ -1,0 +1,46 @@
+.node-version
+.syntastic_classpath
+.idea
+*.iml
+out
+.rbenv-gemsets
+.vscode
+.tool-versions
+
+# https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+.DS_Store
+.DS_Store?
+
+
+# Thumbnails
+._*
+Thumbs.db
+ehthumbs.db
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+
+
+# https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
+# Ignore tags created by etags and ctags
+TAGS
+!TAGS/
+tags
+!tags/
+
+
+
+# https://github.com/github/gitignore/blob/master/Global/vim.gitignore
+.*.sw[a-z]
+*.un~
+Session.vim
+
+*.swp
+*.swo
+*.orig
+*~
+\#*\#
+/.bundle/
+npm-debug.log

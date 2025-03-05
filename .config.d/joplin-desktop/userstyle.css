@@ -1,0 +1,13 @@
+/* For styling the rendered Markdown */
+
+img[alt$=">"] { width: 200px;  }
+img[alt$="<"] { margin-left: calc(100% - 200px);  width: 200px;  }
+img[alt$="><"] { display: block;  margin: 0 auto;  }
+
+img[alt$=">200"] { width: 100px;  }
+img[alt$="<200"] { margin-left: calc(100% - 100px);  width: 100px;  }
+img[alt$="><200"] { display: block;  margin: 0 auto;  }
+    
+img[alt$=">300"] { width: 300px;  }
+img[alt$="<300"] { margin-left: calc(100% - 300px);  width: 300px;  }
+img[alt$="><300"] { display: block;  margin: 0 auto;  }
