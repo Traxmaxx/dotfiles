@@ -16,16 +16,37 @@ echo "Setting up dotfiles for $OS..."
 
 # Create necessary directories
 mkdir -p "$HOME/.config"
-mkdir -p "$HOME/.config/nvim"
-mkdir -p "$HOME/.config/fish"
-mkdir -p "$HOME/.config/tmux"
 mkdir -p "$HOME/.vim/undodir"  # Create undo directory for Neovim
 
-# Function to recursively create symlinks for files in a directory
+# List of files/directories to exclude from symlinking
+EXCLUDE_LIST=(
+    "install.sh"
+    "Brewfile"
+    "README.md"
+    ".gitignore"
+    ".git"
+    ".gitmodules"
+    ".DS_Store"
+)
+
+# Function to check if a file/directory should be excluded
+should_exclude() {
+    local item="$1"
+    local basename=$(basename "$item")
+    
+    for exclude in "${EXCLUDE_LIST[@]}"; do
+        if [[ "$basename" == "$exclude" ]]; then
+            return 0  # true, should exclude
+        fi
+    done
+    
+    return 1  # false, should not exclude
+}
+
+# Function to recursively create symlinks for files only
 create_symlinks_recursive() {
     local source_dir="$1"
     local target_dir="$2"
-    local rel_path="$3"
     
     # Create the target directory if it doesn't exist
     if [ ! -d "$target_dir" ]; then
@@ -35,26 +56,25 @@ create_symlinks_recursive() {
     
     # Symlink files and process subdirectories
     for item in "$source_dir"/*; do
+        # Skip if item doesn't exist (handles empty glob)
+        [ ! -e "$item" ] && continue
+        
         local item_name=$(basename "$item")
         local target_item="$target_dir/$item_name"
-        local current_rel_path
         
-        if [ -n "$rel_path" ]; then
-            current_rel_path="$rel_path/$item_name"
-        else
-            current_rel_path="$item_name"
+        # Skip excluded items
+        if should_exclude "$item_name"; then
+            echo "Skipping excluded item: $item_name"
+            continue
         fi
         
         if [ -f "$item" ]; then
-            # Create parent directory if it doesn't exist
-            mkdir -p "$(dirname "$target_item")"
-            
             # Create symlink for file
-            ln -sf "$PWD/$source_dir/$item_name" "$target_item"
-            echo "Symlinked: $current_rel_path"
+            ln -sf "$PWD/$item" "$target_item"
+            echo "Symlinked file: $item to $target_item"
         elif [ -d "$item" ]; then
-            # Recursively process subdirectory
-            create_symlinks_recursive "$source_dir/$item_name" "$target_item" "$current_rel_path"
+            # For directories, recursively process and symlink files only
+            create_symlinks_recursive "$item" "$target_item"
         fi
     done
 }
@@ -62,45 +82,23 @@ create_symlinks_recursive() {
 # Function to create symbolic links
 create_symlinks() {
     echo "Creating symbolic links..."
+    HOME_CONFIG_DIR=""$HOME/.config""
+    # Source directory (.config.d) in the repository
+    SOURCE_CONFIG_DIR=".config.d"
     
-    # Create home directory if it doesn't exist (just in case)
-    mkdir -p "$HOME"
+    # Create .config directory if it doesn't exist
+    mkdir -p "$HOME_CONFIG_DIR"
     
-    # Config files in root
-    ln -sf "$PWD/.asdfrc" "$HOME/.asdfrc"
-    ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
-    ln -sf "$PWD/.gitignore_global" "$HOME/.githelpers"
-    ln -sf "$PWD/.gitignore_global" "$HOME/.gitignore_global"
-    ln -sf "$PWD/.githelpers" "$HOME/.githelpers"
-    ln -sf "$PWD/.tool-versions" "$HOME/.tool-versions"
 
-    # Process each directory in .config
-    for dir in .config/*; do
-        if [ -d "$dir" ]; then
-            dirname=$(basename "$dir")
-            target_dir="$HOME/.config/$dirname"
-            
-            # Ensure target directory exists
-            mkdir -p "$target_dir"
-            
-            create_symlinks_recursive ".config/$dirname" "$target_dir" "$dirname"
-        fi
-    done
     
-    # Process .config.d directories if they exist
-    if [ -d ".config.d" ]; then
-        for dir in .config.d/*; do
-            if [ -d "$dir" ]; then
-                dirname=$(basename "$dir")
-                target_dir="$HOME/.config/$dirname"
-                
-                # Ensure target directory exists
-                mkdir -p "$target_dir"
-                
-                create_symlinks_recursive ".config.d/$dirname" "$target_dir" "$dirname"
-            fi
-        done
+    # Check if the source directory exists
+    if [ ! -d "$SOURCE_CONFIG_DIR" ]; then
+        echo "Error: Source directory $SOURCE_CONFIG_DIR not found."
+        return 1
     fi
+    
+    # Process all files and directories in .config.d
+    create_symlinks_recursive "$SOURCE_CONFIG_DIR" "$HOME_CONFIG_DIR"
     
     echo "Symlinking complete."
 }
@@ -170,10 +168,17 @@ setup_linux() {
 setup_fish() {
     echo "Setting up fish shell..."
     
-    # Create fish config directories if they don't exist
-    mkdir -p "$HOME/.config/fish/functions"
-    mkdir -p "$HOME/.config/fish/completions"
-    mkdir -p "$HOME/.config/fish/conf.d"
+    # Only create these directories if they weren't already created by create_symlinks
+    # This is a fallback in case the dotfiles repo doesn't contain fish configs
+    if [ ! -d "$HOME/.config/fish/functions" ]; then
+        mkdir -p "$HOME/.config/fish/functions"
+    fi
+    if [ ! -d "$HOME/.config/fish/completions" ]; then
+        mkdir -p "$HOME/.config/fish/completions"
+    fi
+    if [ ! -d "$HOME/.config/fish/conf.d" ]; then
+        mkdir -p "$HOME/.config/fish/conf.d"
+    fi
     
     # Install Fisher if not already installed
     if [ ! -f "$HOME/.config/fish/functions/fisher.fish" ]; then
