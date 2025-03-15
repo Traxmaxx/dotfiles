@@ -1,6 +1,8 @@
 # Dotfiles
 
-A collection of configuration files for setting up a development environment.
+A collection of configuration files for setting up my development environment.
+
+["screenshot of a tmux session and my cmd line shell fish"](screenshots/tmux_shell.png)
 
 ## Installation
 
@@ -13,14 +15,12 @@ cd ~/dotfiles
 
 ### How It Works
 
-This dotfiles setup uses a file-by-file symlinking approach with these principles:
+My dotfiles setup uses a file-by-file symlinking approach with these principles:
 
 - Creates directories in `~/.config/` only if they don't already exist
 - Symlinks individual files from the repository to your config directories
 - Preserves any files not tracked in the repository
 - Only overwrites files that are explicitly managed by the dotfiles
-
-This means you can safely update your dotfiles without losing custom configurations that aren't part of the repository.
 
 ### Full Installation
 
@@ -37,7 +37,7 @@ Simply run:
 
 ### Updating Existing Configuration
 
-To update your configuration files:
+To update configuration files:
 
 ```bash
 ./install.sh update

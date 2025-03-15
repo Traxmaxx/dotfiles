@@ -5,6 +5,7 @@
 tap 'qmk/qmk'
 
 brew 'asdf' # prog-lang version manager
+brew 'bash' # newer bash version on macOS for tmux tokyo-night theme
 brew 'bat' # smarter cat with syntax highlighting
 brew 'difftastic'
 brew 'fd' # faster, colorized alternative to find

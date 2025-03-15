@@ -2,6 +2,10 @@
 
 set -e
 
+HOME_CONFIG_DIR="$HOME/.config"
+# Source directory (.config.d) in the repository
+SOURCE_CONFIG_DIR=".config.d"
+
 # Detect OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
     OS="macos"
@@ -15,7 +19,7 @@ fi
 echo "Setting up dotfiles for $OS..."
 
 # Create necessary directories
-mkdir -p "$HOME/.config"
+mkdir -p "$HOME_CONFIG_DIR"
 mkdir -p "$HOME/.vim/undodir"  # Create undo directory for Neovim
 
 # List of files/directories to exclude from symlinking
@@ -82,14 +86,6 @@ create_symlinks_recursive() {
 # Function to create symbolic links
 create_symlinks() {
     echo "Creating symbolic links..."
-    HOME_CONFIG_DIR=""$HOME/.config""
-    # Source directory (.config.d) in the repository
-    SOURCE_CONFIG_DIR=".config.d"
-    
-    # Create .config directory if it doesn't exist
-    mkdir -p "$HOME_CONFIG_DIR"
-    
-
     
     # Check if the source directory exists
     if [ ! -d "$SOURCE_CONFIG_DIR" ]; then
@@ -99,6 +95,10 @@ create_symlinks() {
     
     # Process all files and directories in .config.d
     create_symlinks_recursive "$SOURCE_CONFIG_DIR" "$HOME_CONFIG_DIR"
+
+    # Create a manual symlink for tmux config to ~/.tmux.conf
+    # Used by the tmux-sensible plugin
+    ln -sf "$PWD/$SOURCE_CONFIG_DIR/tmux/tmux.conf" "$HOME/.tmux.conf" 
     
     echo "Symlinking complete."
 }
@@ -128,6 +128,9 @@ setup_macos() {
     else
         echo "Brewfile not found. Skipping package installation."
     fi
+
+    # Setup tmux plugin treemux python packages for neotree
+    /usr/bin/python3 -m pip install --user pynvim
 }
 
 # Linux specific setup
@@ -148,6 +151,8 @@ setup_linux() {
             npm \
             ruby \
             curl
+        # Setup tmux plugin treemux python packages for neotree
+        /usr/bin/python3 -m pip install --user pynvim
     elif command -v dnf >/dev/null 2>&1; then
         sudo dnf install -y \
             fish \
@@ -159,6 +164,8 @@ setup_linux() {
             nodejs \
             ruby \
             curl
+        # Setup tmux plugin treemux python packages for neotree
+        /usr/bin/python3 -m pip install --user pynvim
     else
         echo "Unsupported Linux distribution. Please install packages manually."
     fi
@@ -170,18 +177,18 @@ setup_fish() {
     
     # Only create these directories if they weren't already created by create_symlinks
     # This is a fallback in case the dotfiles repo doesn't contain fish configs
-    if [ ! -d "$HOME/.config/fish/functions" ]; then
-        mkdir -p "$HOME/.config/fish/functions"
+    if [ ! -d "$HOME_CONFIG_DIR/fish/functions" ]; then
+        mkdir -p "$HOME_CONFIG_DIR/fish/functions"
     fi
-    if [ ! -d "$HOME/.config/fish/completions" ]; then
-        mkdir -p "$HOME/.config/fish/completions"
+    if [ ! -d "$HOME_CONFIG_DIR/fish/completions" ]; then
+        mkdir -p "$HOME_CONFIG_DIR/fish/completions"
     fi
-    if [ ! -d "$HOME/.config/fish/conf.d" ]; then
-        mkdir -p "$HOME/.config/fish/conf.d"
+    if [ ! -d "$HOME_CONFIG_DIR/fish/conf.d" ]; then
+        mkdir -p "$HOME_CONFIG_DIR/fish/conf.d"
     fi
     
     # Install Fisher if not already installed
-    if [ ! -f "$HOME/.config/fish/functions/fisher.fish" ]; then
+    if [ ! -f "$HOME_CONFIG_DIR/fish/functions/fisher.fish" ]; then
         echo "Installing Fisher plugin manager..."
         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
     fi
