@@ -2,7 +2,7 @@
 
 A collection of configuration files for setting up my development environment.
 
-["screenshot of a tmux session and my cmd line shell fish"](screenshots/tmux_shell.png)
+![screenshot of a tmux session and my cmd line shell fish](screenshots/tmux_shell.png)
 
 ## Installation
 
