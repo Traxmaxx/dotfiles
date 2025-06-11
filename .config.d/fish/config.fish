@@ -1,7 +1,12 @@
+if test -e $HOME/.config/fish/themes/tokyonight_night.theme
 . $HOME/.config/fish/themes/tokyonight_night.theme
+end
+if test -e $HOME/.config/fish/conf.d/prompt.fish
 . $HOME/.config/fish/conf.d/prompt.fish
+end
+if test -e $HOME/.config/fish/conf.d/secrets.fish
 . $HOME/.config/fish/conf.d/secrets.fish
-
+end
 
 if test -e ~/.docker/bin
   if not contains ~/.docker/bin $PATH

@@ -1,7 +1,6 @@
 # Keep generic configuration in main .gitconfig
 [user]
     name = Traxmaxx
-
 # Include machine-specific configuration that contains secrets
 [includeIf "gitdir:~/"]
     path = ~/.gitconfig.local
