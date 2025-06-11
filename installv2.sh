@@ -25,7 +25,7 @@ echo "Setting up NixOS configuration for $OS..."
 update_dotfiles_path() {
     echo "Updating dotfiles repository path in home.nix..."
     REPO_PATH="$PWD"
-    sed -i.bak "s|dotfilesRepo = \"\${config.home.homeDirectory}/path/to/dotfiles\"|dotfilesRepo = \"$REPO_PATH\"|g" "$NIXOS_DIR/home.nix"
+    sed -i.bak "s|dotfilesRepo = \"$SOURCE_CONFIG_DIR\"|dotfilesRepo = \"$REPO_PATH\"|g" "$NIXOS_DIR/home.nix"
     rm -f "$NIXOS_DIR/home.nix.bak"
 }
 
@@ -134,28 +134,28 @@ main() {
     # Update the dotfiles repository path in home.nix
     update_dotfiles_path
     
-    # Install Nix package manager
-    install_nix
+    # # Install Nix package manager
+    # install_nix
     
-    # Setup OS-specific configurations
-    if [ "$OS" = "macos" ]; then
-        setup_nix_darwin
-    elif [ "$OS" = "linux" ]; then
-        setup_nixos_linux
-    fi
+    # # Setup OS-specific configurations
+    # if [ "$OS" = "macos" ]; then
+    #     setup_nix_darwin
+    # elif [ "$OS" = "linux" ]; then
+    #     setup_nixos_linux
+    # fi
     
-    # Setup flakes (optional, uncomment if you want to use flakes)
-    # setup_flakes
+    # # Setup flakes (optional, uncomment if you want to use flakes)
+    # # setup_flakes
     
-    echo "Installation complete! You may need to restart your terminal or system."
-    echo "Your dotfiles from .config.d will be automatically symlinked by Home Manager."
-    echo "Note: Your configurations from .config.d will be used as-is:"
-    echo "      - Neovim configuration from .config.d/nvim"
-    echo "      - tmux configuration from .config.d/tmux"
-    echo "      - fish configuration from .config.d/fish"
-    echo "      If you want to manage these through Nix in the future,"
-    echo "      check the nixos/neovim.nix, nixos/tmux.nix, and nixos/fish.nix files for example configurations."
-    echo "      You can enable them by uncommenting the imports in nixos/home.nix."
+    # echo "Installation complete! You may need to restart your terminal or system."
+    # echo "Your dotfiles from .config.d will be automatically symlinked by Home Manager."
+    # echo "Note: Your configurations from .config.d will be used as-is:"
+    # echo "      - Neovim configuration from .config.d/nvim"
+    # echo "      - tmux configuration from .config.d/tmux"
+    # echo "      - fish configuration from .config.d/fish"
+    # echo "      If you want to manage these through Nix in the future,"
+    # echo "      check the nixos/neovim.nix, nixos/tmux.nix, and nixos/fish.nix files for example configurations."
+    # echo "      You can enable them by uncommenting the imports in nixos/home.nix."
 }
 
 main
