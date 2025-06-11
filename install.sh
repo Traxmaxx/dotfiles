@@ -98,7 +98,9 @@ create_symlinks() {
 
     # Create a manual symlink for tmux config to ~/.tmux.conf
     # Used by the tmux-sensible plugin
-    ln -sf "$PWD/$SOURCE_CONFIG_DIR/tmux/tmux.conf" "$HOME/.tmux.conf" 
+    ln -sf "$PWD/$SOURCE_CONFIG_DIR/tmux/.tmux-cht-command" "$HOME/.tmux-cht-command" 
+    # And also cheatsheet configs
+    ln -sf "$PWD/$SOURCE_CONFIG_DIR/tmux/.tmux-cht-languages" "$HOME/.tmux-cht-languages" 
     
     echo "Symlinking complete."
 }
