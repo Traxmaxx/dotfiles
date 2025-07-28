@@ -152,7 +152,8 @@ setup_linux() {
             nodejs \
             npm \
             ruby \
-            curl
+            curl \
+            zellij
         # Setup tmux plugin treemux python packages for neotree
         /usr/bin/python3 -m pip install --user pynvim
     elif command -v dnf >/dev/null 2>&1; then
@@ -165,7 +166,8 @@ setup_linux() {
             jq \
             nodejs \
             ruby \
-            curl
+            curl \
+            zellij
         # Setup tmux plugin treemux python packages for neotree
         /usr/bin/python3 -m pip install --user pynvim
     else

@@ -19,6 +19,7 @@ brew 'node'
 brew 'qmk' # keyboard firmware
 brew 'ruby'
 brew 'rust'
+brew 'zellij'
 
 # Install fonts
 cask 'font-jetbrains-mono-nerd-font'
