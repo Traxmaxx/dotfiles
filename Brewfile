@@ -19,6 +19,7 @@ brew 'node'
 brew 'qmk' # keyboard firmware
 brew 'ruby'
 brew 'rust'
+brew 'stow'
 brew 'zellij'
 
 # Install fonts
