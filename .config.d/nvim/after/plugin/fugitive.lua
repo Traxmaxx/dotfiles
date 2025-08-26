@@ -20,23 +20,33 @@ autocmd("BufWinEnter", {
         end
 
         local bufnr = vim.api.nvim_get_current_buf()
-        local opts = {buffer = bufnr, remap = false}
-        
+        local opts = { buffer = bufnr, remap = false }
+
         -- Using which-key for buffer-local mappings
         local wk = require("which-key")
-        wk.register({
-            ["<leader>gp"] = { 
-                function() vim.cmd.Git('push') end, 
-                "Git Push" 
+        wk.add({
+            {
+                { buffer = bufnr },
+                {
+                    "<leader>gp",
+                    function()
+                        vim.cmd.Git("push")
+                    end,
+                    desc = "Git Push",
+                },
+                {
+                    "<leader>gP",
+                    function()
+                        vim.cmd.Git({ "pull", "--rebase" })
+                    end,
+                    desc = "Git Pull (rebase)",
+                },
+                {
+                    "<leader>gt",
+                    ":Git push -u origin ",
+                    desc = "Push with tracking",
+                },
             },
-            ["<leader>gP"] = { 
-                function() vim.cmd.Git({'pull', '--rebase'}) end,
-                "Git Pull (rebase)"
-            },
-            ["<leader>gt"] = { 
-                ":Git push -u origin ", 
-                "Push with tracking" 
-            }
-        }, { buffer = bufnr })
+        })
     end,
 })

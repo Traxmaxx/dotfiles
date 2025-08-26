@@ -2,9 +2,7 @@
 local wk = require("which-key")
 
 -- Register trouble quickfix toggle with which-key
-wk.register({
-    ["<leader>xq"] = { 
-        "<cmd>TroubleToggle quickfix<cr>", 
-        "Toggle Quickfix in Trouble" 
-    }
-}, { mode = "n", silent = true, noremap = true })
+wk.add({
+    { mode = "n", silent = true, noremap = true },
+    { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Toggle Quickfix in Trouble" },
+})

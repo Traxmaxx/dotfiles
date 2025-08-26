@@ -1,5 +1,5 @@
 -- Treesitter configuration
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   -- Languages to install parsers for
   ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua", "rust", "go", "json" },
 
@@ -12,5 +12,4 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-}
-
+})

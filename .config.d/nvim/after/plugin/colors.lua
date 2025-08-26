@@ -1,10 +1,10 @@
 -- Disable background for transparency
-require('tokyonight').setup({
-    disable_background = true
+require("tokyonight").setup({
+	disable_background = true,
 })
 
 -- Apply colorscheme with transparent background
-function ColorMyPencils(color) 
+function ColorMyPencils(color)
 	color = color or "tokyonight-night"
 	vim.cmd.colorscheme(color)
 

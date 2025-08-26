@@ -26,7 +26,7 @@ return require('packer').startup(function(use)
   -- Core: Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  
+
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- Telescope: Fuzzy finder for files, buffers, and more
   use {
@@ -76,7 +76,7 @@ return require('packer').startup(function(use)
   use('nvim-tree/nvim-web-devicons')  -- Icons from popular icon fonts
   use('echasnovski/mini.icons')       -- Minimalistic icon set
   use('nvim-treesitter/playground')   -- Treesitter debugging and development
-  
+
   -- ThePrimeagen's Productivity Tools
   use('theprimeagen/harpoon')          -- Quick file navigation and marking
   use('theprimeagen/refactoring.nvim') -- Refactoring utilities
@@ -113,6 +113,7 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")            -- GitHub Copilot AI code suggestions
   use("eandrju/cellular-automaton.nvim") -- Fun visualizations based on cellular automata
   use("laytan/cloak.nvim")             -- Hide sensitive information in files
+  use("luckasRanarison/tailwind-tools.nvim") -- TailwindCSS autocompletion
 
 end)
 

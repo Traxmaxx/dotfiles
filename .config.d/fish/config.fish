@@ -15,13 +15,17 @@ if test -e ~/.docker/bin
 end
 
 ## Init ssh-agent on OSX
-fish_ssh_agent
+# fish_ssh_agent
 
 ## Init Homebrew and source asdf on OSX
 if test -e /opt/homebrew/bin/
-  if not contains /opt/homebrew/bin $PATH
-    eval (/opt/homebrew/bin/brew shellenv)
-  end
+  # remove initial /opt/homebrew/bin
+  # I currently don't know where this is coming from initially
+  set PATH (string match -v /opt/homebrew/bin $PATH)
+  set PATH (string match -v /opt/homebrew/sbin $PATH)
+  set PATH (string match -v /usr/bin $PATH)
+  # also remove /usr/bin due to this error:
+  # /usr/bin occurs before /opt/homebrew/bin in your PATH
 
   # ASDF configuration code
   # source (brew --prefix asdf)/share/fish/vendor_completions.d/asdf.fish
@@ -37,6 +41,18 @@ if test -e /opt/homebrew/bin/
       set -gx --prepend PATH $_asdf_shims
   end
   set --erase _asdf_shims
+
+  if not contains /opt/homebrew/bin $PATH
+    set -gx --append PATH /opt/homebrew/bin
+  end
+
+  if not contains /opt/homebrew/bin $PATH
+    set -gx --append PATH /opt/homebrew/sbin
+  end
+
+  if not contains /usr/bin $PATH
+    set -gx --append PATH /usr/bin
+  end
 end
 
 ## Init Homebrew and source asdf on Deck

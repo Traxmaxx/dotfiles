@@ -44,4 +44,4 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 -- Disable mouse
-vim.o.mouse = ''
+vim.o.mouse = ""

@@ -10,10 +10,10 @@ require("traxmaxx.remap")
 -- Create autocommand groups
 -- Autocommand groups allow organizing related autocommands together
 local augroup = vim.api.nvim_create_augroup
-local TraxmaxxGroup = augroup('Traxmaxx', {})
+local TraxmaxxGroup = augroup("Traxmaxx", {})
 
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
+local yank_group = augroup("HighlightYank", {})
 
 -- which-key configuration
 -- Timeout settings for key sequence recognition
@@ -21,7 +21,7 @@ local yank_group = augroup('HighlightYank', {})
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 -- Disable mouse interactions for keyboard-focused workflow
-vim.o.mouse = ''
+vim.o.mouse = ""
 
 -- automatically run :PackerCompile whenever plugins.lua is updated
 vim.cmd([[
@@ -40,26 +40,26 @@ end
 
 -- Highlight yanked text temporarily for visual feedback
 -- This creates a brief highlight effect when text is yanked (copied)
-autocmd('TextYankPost', {
+autocmd("TextYankPost", {
     group = yank_group,
-    pattern = '*',
+    pattern = "*",
     callback = function()
         vim.highlight.on_yank({
-            higroup = 'IncSearch', -- Highlight group to use
-            timeout = 40,          -- Duration of highlight in milliseconds
+            higroup = "IncSearch", -- Highlight group to use
+            timeout = 40, -- Duration of highlight in milliseconds
         })
     end,
 })
 
 -- Remove trailing whitespace on file save
 -- This automatically trims trailing whitespace when saving any file
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = TraxmaxxGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]], -- Vim command to strip trailing whitespace
 })
 
 -- Netrw (built-in file explorer) configuration
-vim.g.netrw_browse_split = 0  -- Open files in the same window
-vim.g.netrw_banner = 0        -- Hide the banner at the top of netrw
-vim.g.netrw_winsize = 25      -- Set the width of the netrw window to 25% of screen
+vim.g.netrw_browse_split = 0 -- Open files in the same window
+vim.g.netrw_banner = 0 -- Hide the banner at the top of netrw
+vim.g.netrw_winsize = 25 -- Set the width of the netrw window to 25% of screen
