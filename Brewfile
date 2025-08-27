@@ -20,6 +20,7 @@ brew 'qmk' # keyboard firmware
 brew 'ruby'
 brew 'rust'
 brew 'stow'
+brew 'stylua'
 brew 'zellij'
 
 # Install fonts
