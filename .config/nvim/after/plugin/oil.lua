@@ -27,7 +27,7 @@ require("oil").setup({
     concealcursor = "nvic",
   },
   -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-  delete_to_trash = false,
+  delete_to_trash = true,
   -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
   skip_confirm_for_simple_edits = false,
   -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
@@ -58,15 +58,15 @@ require("oil").setup({
   -- Set to `false` to remove a keymap
   -- See :help oil-actions for a list of all available actions
   keymaps = {
-    ["g?"] = { "actions.show_help", mode = "n" },
-    ["<CR>"] = "actions.select",
+    ["g?"] = { "actions.show_help", mode = "n", desc = "Oil Help" },
+    ["<CR>"] = { "actions.select", desc = "Oil Select" },
     ["<C-s>"] = { "actions.select", opts = { vertical = true } },
     ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
     ["<C-t>"] = { "actions.select", opts = { tab = true } },
     ["<C-p>"] = "actions.preview",
-    ["<C-c>"] = { "actions.close", mode = "n" },
+    ["<C-c>"] = { "actions.close", mode = "n", desc = "Oil Close" },
     ["<C-l>"] = "actions.refresh",
-    ["-"] = { "actions.parent", mode = "n" },
+    ["-"] = { "actions.parent", mode = "n", desc = "Oil Parent" },
     ["_"] = { "actions.open_cwd", mode = "n" },
     ["`"] = { "actions.cd", mode = "n" },
     ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
