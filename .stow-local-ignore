@@ -19,7 +19,7 @@ _darcs
 Brewfile
 install.sh
 
-\.screenshots
+\screenshots
 
 \.DS_Store
 
