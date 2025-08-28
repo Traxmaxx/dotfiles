@@ -28,11 +28,11 @@ wk.add({
 
     -- Mark file
     {
-        "<leader>a",
+        "<C-e>",
         function()
-            mark.add_file()
+            toggle_telescope(harpoon:list())
         end,
-        desc = "Mark file",
+        desc = "Open harpoon window",
         mode = "n",
     },
 
@@ -40,7 +40,7 @@ wk.add({
     {
         "<C-e>",
         function()
-            ui.toggle_quick_menu()
+            harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
         desc = "Toggle Quick Menu",
         mode = "n",
@@ -50,7 +50,7 @@ wk.add({
     {
         "<C-h>",
         function()
-            ui.nav_file(1)
+            harpoon:list():select(1)
         end,
         desc = "Nav File 1",
         mode = "n",
@@ -58,7 +58,7 @@ wk.add({
     {
         "<C-t>",
         function()
-            ui.nav_file(2)
+            harpoon:list():select(2)
         end,
         desc = "Nav File 2",
         mode = "n",
@@ -66,7 +66,7 @@ wk.add({
     {
         "<C-n>",
         function()
-            ui.nav_file(3)
+            harpoon:list():select(3)
         end,
         desc = "Nav File 3",
         mode = "n",
@@ -74,7 +74,23 @@ wk.add({
     {
         "<C-s>",
         function()
-            ui.nav_file(4)
+            harpoon:list():select(4)
+        end,
+        desc = "Nav File 4",
+        mode = "n",
+    },
+    {
+        "<C-S-P>",
+        function()
+            harpoon:list():prev()
+        end,
+        desc = "Nav File 4",
+        mode = "n",
+    },
+    {
+        "<C-S-N>",
+        function()
+            harpoon:list():next()
         end,
         desc = "Nav File 4",
         mode = "n",
