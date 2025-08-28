@@ -5,7 +5,7 @@ wk.setup({
   expand = 2,
   plugins = {
     marks = true,
-    registers = false,
+    registers = true,
     spelling = { enabled = false },
     presets = {
       g = true,
@@ -33,8 +33,26 @@ wk.add({
     { "<leader>w", "<cmd>w<cr>", desc = "Save file" }, -- Quick save from visual mode
   },
   {
+    mode = "n",
+    {
+      "<leader>ff",
+      function()
+        require("oil").open(vim.fn.expand("%:p:h"))
+      end,
+      desc = "Open Oil (file dir)",
+    },
+
+    {
+      "<leader>fv",
+      function()
+        require("oil").open()
+      end,
+      desc = "Open Oil",
+    },
+  },
+  {
     mode = { "n" }, -- NORMAL mode
-    { "<leader>pv", vim.cmd.Ex, desc = "Toggle file explorer" }, -- Open netrw file explorer
+    -- { "<leader>pv", vim.cmd.Ex, desc = "Toggle file explorer" }, -- Open netrw file explorer
     { "<leader>Y", [["+Y]], desc = "Yank line to system clipboard" }, -- Copy whole line to system clipboard
     { "Q", "<nop>", desc = "Disable Ex mode" }, -- Prevents accidental Ex mode activation
     { "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", desc = "Open tmux sessionizer" }, -- Project navigation
@@ -64,6 +82,15 @@ wk.add({
     { "<C-u>", "<C-u>zz", desc = "Scroll up and center" }, -- Scroll up with cursor centered
     { "n", "nzzzv", desc = "Next search result and center" }, -- Next search result with cursor centered
     { "N", "Nzzzv", desc = "Previous search result and center" }, -- Previous search result with cursor centered
+    { "g?", desc = "Oil Help" },
+    { "<C-c>", desc = "Oil Close" },
+    { "-", desc = "Oil Parent" },
+    { "_", desc = "actions.open_cwd" },
+    { "`", desc = "actions.cd" },
+    { "~", desc = "actions.cd" },
+    { "gs", desc = "actions.change_sort" },
+    { "g.", desc = "actions.toggle_hidden" },
+    { "g\\", desc = "actions.toggle_trash" },
   },
   {
     mode = { "n", "v" }, -- VISUAL and NORMAL mode shared mappings
@@ -76,9 +103,19 @@ wk.add({
     { "<C-j>", "<cmd>cprev<CR>zz", desc = "Previous quickfix item" }, -- Previous quickfix item, centered
     { "<leader>k", "<cmd>lnext<CR>zz", desc = "Next location list item" }, -- Next location list item
     { "<leader>j", "<cmd>lprev<CR>zz", desc = "Previous location list item" }, -- Previous location list item
-
-    -- Legacy mappings commented out for reference
-    -- {"<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc="LSP"},
-    -- {"<leader>x", "<cmd>!chmod +x %<CR>", {silent = true}, desc="LSP"},
+  },
+  {
+    { "<CR>", desc = "Oil Select" },
+    { "<C-s>", desc = "actions.select" },
+    { "<C-h>", desc = "actions.select" },
+    { "<C-t>", desc = "actions.select" },
+    { "<C-p>", desc = "actions.preview" },
+    { "<C-l>", desc = "actions.refresh" },
+    { "gx", desc = "actions.open_external" },
+    { "gd", desc = "Toggle file detail view" },
   },
 })
+
+-- Legacy mappings commented out for reference
+-- {"<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc="LSP"},
+-- {"<leader>x", "<cmd>!chmod +x %<CR>", {silent = true}, desc="LSP"},

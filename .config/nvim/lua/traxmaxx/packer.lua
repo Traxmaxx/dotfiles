@@ -33,13 +33,13 @@ return require("packer").startup(function(use)
     end,
   })
 
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   -- Telescope: Fuzzy finder for files, buffers, and more
+  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     -- or                            , branch = '0.1.x',
-    requires = { { "nvim-lua/plenary.nvim" } }, -- Plenary: Lua utility functions
+    requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzf-native.nvim" } }, -- Plenary: Lua utility functions
   })
 
   -- Tokyo Night: Modern dark theme with clean design and good contrast
@@ -64,31 +64,41 @@ return require("packer").startup(function(use)
   })
 
   -- Which-Key: Displays keybindings in popup and enhances discoverability
-  use({
-    "folke/which-key.nvim",
-  })
+  use({ "folke/which-key.nvim" })
 
-  -- Treesitter: Advanced syntax highlighting and code navigation
+  use({ "nvim-treesitter/nvim-treesitter-context" }) -- Show code context while scrolling
   use({
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter", -- Treesitter: Advanced syntax highlighting and code navigation
     run = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
     end,
+    requires = {
+      "nvim-treesitter/nvim-treesitter-context",
+    },
   })
 
   -- Icons and UI enhancements
   -- Both icon packages are for which-key and other UI elements
   use("nvim-tree/nvim-web-devicons") -- Icons from popular icon fonts
   use("echasnovski/mini.icons") -- Minimalistic icon set
-  use("nvim-treesitter/playground") -- Treesitter debugging and development
 
   -- ThePrimeagen's Productivity Tools
-  use("theprimeagen/harpoon") -- Quick file navigation and marking
-  use("theprimeagen/refactoring.nvim") -- Refactoring utilities
+  use("nvim-lua/plenary.nvim") -- don't forget to add this one if you don't have it yet!
+  use({
+    "ThePrimeagen/harpoon", -- Quick file navigation and marking
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  })
+  use({
+    "ThePrimeagen/refactoring.nvim", -- Refactoring utilities
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+  })
   use("mbbill/undotree") -- Visual undo history
   use("tpope/vim-fugitive") -- Git integration
-  use("nvim-treesitter/nvim-treesitter-context") -- Show code context while scrolling
 
   -- LSP
   use({
@@ -108,34 +118,6 @@ return require("packer").startup(function(use)
     requires = { "rafamadriz/friendly-snippets" },
     tag = "v1.*",
   })
-  -- use({
-  --   "VonHeikemen/lsp-zero.nvim",
-  --   branch = "v1.x",
-  --   requires = {
-  --     -- LSP Support
-  --     { "neovim/nvim-lspconfig" }, -- Core LSP client configuration
-  --     { "williamboman/mason.nvim" }, -- Package manager for LSP servers
-  --     { "williamboman/mason-lspconfig.nvim" }, -- Bridge between Mason and lspconfig
-
-  --     -- Autocompletion
-  --     {
-  --       "saghen/blink.cmp",
-  --       -- optional: provides snippets for the snippet source
-  --       dependencies = { "rafamadriz/friendly-snippets" },
-  --       version = "1.*",
-  --     },
-  --     -- { "hrsh7th/nvim-cmp" }, -- Completion engine
-  --     -- { "hrsh7th/cmp-buffer" }, -- Buffer completions
-  --     -- { "hrsh7th/cmp-path" }, -- Path completions
-  --     -- { "saadparwaiz1/cmp_luasnip" }, -- Snippet completions
-  --     -- { "hrsh7th/cmp-nvim-lsp" }, -- LSP completions
-  --     -- { "hrsh7th/cmp-nvim-lua" }, -- Lua completions for Neovim API
-
-  --     -- Snippets
-  --     { "L3MON4D3/LuaSnip" }, -- Snippet engine
-  --     { "rafamadriz/friendly-snippets" }, -- Collection of snippets
-  --   },
-  -- })
 
   -- Additional Utilities
   use("folke/zen-mode.nvim") -- Distraction-free coding mode
