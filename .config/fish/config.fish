@@ -8,17 +8,32 @@ if test -e $HOME/.config/fish/conf.d/secrets.fish
 . $HOME/.config/fish/conf.d/secrets.fish
 end
 
+set -gx HOMEBREW_NO_ANALYTICS 1
+
+## Detect where we're running
+switch (uname)
+  case Darwin
+    set -g is_macos true
+  case Linux
+    if test -e /home/linuxbrew/.linuxbrew/bin
+      set -g is_deck true
+    else
+      set -g is_linux true
+    end
+end
+
+## Add docker to PATH
 if test -e ~/.docker/bin
   if not contains ~/.docker/bin $PATH
     set -gx --prepend PATH ~/.docker/bin
   end
 end
-
-## Init ssh-agent on OSX
-# fish_ssh_agent
-
+ 
 ## Init Homebrew and source asdf on OSX
-if test -e /opt/homebrew/bin/
+if test $is_macos
+  ## Init ssh-agent on OSX
+  fish_ssh_agent
+
   # remove initial /opt/homebrew/bin
   # I currently don't know where this is coming from initially
   set PATH (string match -v /opt/homebrew/bin $PATH)
@@ -40,6 +55,7 @@ if test -e /opt/homebrew/bin/
   if not contains $_asdf_shims $PATH
       set -gx --prepend PATH $_asdf_shims
   end
+
   set --erase _asdf_shims
 
   if not contains /opt/homebrew/bin $PATH
@@ -56,7 +72,7 @@ if test -e /opt/homebrew/bin/
 end
 
 ## Init Homebrew and source asdf on Deck
-if test -e /home/linuxbrew/.linuxbrew/bin
+if test $is_deck
   if not contains /home/linuxbrew/.linuxbrew/bin $PATH
     set -gx --prepend PATH /home/linuxbrew/.linuxbrew/bin
     source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
@@ -64,24 +80,13 @@ if test -e /home/linuxbrew/.linuxbrew/bin
 end
 
 ## Source asdf on Linux
-if test -e /opt/asdf-vm/asdf.fish
+if test $is_linux
   source /opt/asdf-vm/asdf.fish
 end
-
-set -gx HOMEBREW_NO_ANALYTICS 1
 
 if test -e "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
   set -gx --prepend PATH "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 end
-
-# Tmux Shell scripts loaded as functions for better arguments handling
-# function tmk
-#     $HOME/.config/fish/functions/tmk.sh $argv
-# end
-
-# function tm
-#     $HOME/.config/fish/functions/tm.sh $argv
-# end
 
 # Aliases
 alias chrome "chromium"
@@ -98,5 +103,28 @@ alias gca "git commit -am"
 alias fm='fmux_fm'
 alias fmk='fmux_fmk'
 
+# Override fzf.fish keybindings to CMD+F on macOS
+if test $is_macos
+  # COMMAND            |  DEFAULT KEY SEQUENCE         |  CORRESPONDING OPTION
+  # Search Directory   |  CMD+F (F for file)      |  --directory
+  # Search Git Log     |  CMD+L (L for log)       |  --git_log
+  # Search Git Status  |  CMD+S (S for status)    |  --git_status
+  # Search History     |  CMD+R     (R for reverse)   |  --history
+  # Search Processes   |  CMD+P (P for process)   |  --processes
+  # Search Variables   |  CMD+Alt+V     (V for variable)  |  --variables
+  fzf_configure_bindings --directory=\e\cf --variables=\e\cv --git_log=\e\cl --git_status=\e\cs --history=\cr --processes=\e\cp
+else
+  # COMMAND            |  DEFAULT KEY SEQUENCE         |  CORRESPONDING OPTION
+  # Search Directory   |  Ctrl+Alt+F (F for file)      |  --directory
+  # Search Git Log     |  Ctrl+Alt+L (L for log)       |  --git_log
+  # Search Git Status  |  Ctrl+Alt+S (S for status)    |  --git_status
+  # Search History     |  Ctrl+R     (R for reverse)   |  --history
+  # Search Processes   |  Ctrl+Alt+P (P for process)   |  --processes
+  # Search Variables   |  Ctrl+V     (V for variable)  |  --variables
+  fzf_configure_bindings --directory=\e\cf --variables=\e\cv --git_log=\e\cl --git_status=\e\cs --history=\cr --processes=\e\cp
+end
+
+if test -e /Users/traxmaxx/.lmstudio/bin/
 # Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/traxmaxx/.lmstudio/bin
+  set -gx PATH $PATH /Users/traxmaxx/.lmstudio/bin
+end

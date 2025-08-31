@@ -43,43 +43,68 @@
 # resize-overlay-duration = 4s 200ms
 
 
+# Shell Integration
+# ==========================
+# # Whether to enable shell integration auto-injection or not
+shell-integration = fish
+# # Shell integration features to enable. These require our shell integration to be loaded, either automatically via shell-integration or manually.
+shell-integration-features = no-cursor
 
+# Style the looks of Ghostty
+# ==========================
+# # All of the configurations behavior adjust various metrics determined by the font. The values can be integers (1, -1, etc.) or a percentage (20%, -15%, etc.). In each case, the values represent the amount to change the original value.
+# # For example, a value of 1 increases the value by 1; it does not set it to literally 1. A value of 20% increases the value by 20%. And so on.
+adjust-cell-width = 0
 adjust-underline-position = 40%
 adjust-underline-thickness = -60%
+
+adjust-cursor-thickness = 5
 
 alpha-blending = linear-corrected
 
 background-opacity = 0.96
 background-blur-radius = 40
 
-clipboard-paste-protection = false
-
-confirm-close-surface = false
-
-cursor-style = "block"
-cursor-style-blink = false
-
 custom-shader = /Users/traxmaxx/Sites/private/ghostty-shaders/bloom025.glsl
 custom-shader-animation = true
+
+cursor-style = "bar"
+cursor-style-blink = false
 
 font-family =  "JetBrainsMono Nerd Font Mono"
 font-feature = "liga, salt"
 font-size = 12.5
 font-thicken = true
 
-keybind = global:f12=toggle_quick_terminal
-
 macos-titlebar-style = tabs
-
-mouse-scroll-multiplier = 1
-
-shell-integration = fish
-shell-integration-features = no-cursor
 
 theme = "tokyonight-storm"
 
+
+# # The opacity level (opposite of transparency) of an unfocused split. Unfocused splits by default are slightly faded out to make it easier to see which split is focused. To disable this feature, set this value to 1.
 unfocused-split-opacity = 1.0
 
+# # The initial window size. This size is in terminal grid cells by default. Both values must be set to take effect. If only one value is set, it is ignored.
 window-width = 120
 window-height = 45
 window-padding-x = 4
+
+# Behavioral Settings
+# ==========================
+# # Trims trailing whitespace on data that is copied to the clipboard. This does not affect data sent to the clipboard via clipboard-write.
+clipboard-trim-trailing-spaces=true
+
+# # Require confirmation before pasting text that appears unsafe
+clipboard-paste-protection = false
+
+# # Confirms that a surface should be closed before closing it
+confirm-close-surface = false
+
+# # Enable URL matching. URLs are matched on hover with control (Linux) or super (macOS) pressed
+link-url = true
+
+# # Multiplier for scrolling distance with the mouse wheel.
+mouse-scroll-multiplier = 1
+
+# # Key bindings
+keybind = global:f12=toggle_quick_terminal
