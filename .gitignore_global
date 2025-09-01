@@ -6,6 +6,7 @@ out
 .rbenv-gemsets
 .vscode
 .tool-versions
+.tmux-sessionizer
 
 # https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
 .DS_Store

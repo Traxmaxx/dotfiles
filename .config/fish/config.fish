@@ -31,9 +31,6 @@ end
  
 ## Init Homebrew and source asdf on OSX
 if test $is_macos
-  ## Init ssh-agent on OSX
-  fish_ssh_agent
-
   # remove initial /opt/homebrew/bin
   # I currently don't know where this is coming from initially
   set PATH (string match -v /opt/homebrew/bin $PATH)
