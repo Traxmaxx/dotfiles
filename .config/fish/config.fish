@@ -9,6 +9,8 @@ if test -e $HOME/.config/fish/conf.d/secrets.fish
 end
 
 set -gx HOMEBREW_NO_ANALYTICS 1
+# Set default kitty editor
+set -gx EDITOR nvim
 
 ## Detect where we're running
 switch (uname)
