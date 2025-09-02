@@ -604,52 +604,53 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(ace-link add-node-modules-path aggressive-indent nerd-icons auto-compile
-              auto-highlight-symbol avy-jump-helm-line centered-cursor-mode
-              clean-aindent-mode column-enforce-mode company define-word devdocs
-              diminish dired-quick-sort disable-mouse dotenv-mode drag-stuff
-              dumb-jump elisp-def elisp-demos elisp-slime-nav emmet-mode emr
-              eval-sexp-fu evil-anzu evil-args evil-cleverparens evil-collection
-              evil-easymotion evil-escape evil-evilified-state evil-exchange
-              evil-goggles evil-iedit-state evil-indent-plus evil-lion
-              evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
-              evil-numbers evil-surround evil-textobj-line evil-tutor
-              evil-unimpaired evil-visual-mark-mode evil-visualstar
-              expand-region eyebrowse fancy-battery flycheck golden-ratio
-              google-translate grizzl helm-ag helm-comint helm-descbinds
-              helm-make helm-mode-manager helm-org helm-projectile helm-purpose
-              helm-swoop helm-themes helm-xref hide-comnt highlight-indentation
-              highlight-numbers highlight-parentheses hl-todo holy-mode
-              hungry-delete hybrid-mode import-js indent-guide info+ inspector
-              link-hint lorem-ipsum macrostep multi-line nameless npm-mode
-              open-junk-file org-superstar overseer page-break-lines paradox
-              password-generator pcre2el popwin quickrun rainbow-delimiters
-              restart-emacs space-doc spaceline spacemacs-purpose-popwin
-              spacemacs-whitespace-cleanup string-edit-at-point
-              string-inflection symbol-overlay symon term-cursor toc-org
-              treemacs-evil treemacs-icons-dired treemacs-persp
-              treemacs-projectile typescript-mode undo-fu undo-fu-session
-              uuidgen vi-tilde-fringe volatile-highlights vundo web-mode wgrep
-              winum writeroom-mode ws-butler yasnippet))
- '(spacemacs-theme-custom-colors
-   '((base . "#c0caf5") (border . "#3d59a1") (bg1 . "#1a1b26") (cblk . "#1abc9c")
-     (cblk-bg . "#1a1b26") (cblk-ln-bg . "#3346c7") (cursor . "#a9b1d6")
-     (const . "#ff9e64") (comment . "#565f89") (comment-bg . "#1a1b26")
-     (err . "#db4b4b") (func . "#7aa2f7") (head1 . "#bb9af7")
-     (head2 . "#7aa2f7") (head3-bg . "#ffffff") (highlight . "#3b4261")
-     (lnum . "#3b4261") (keyword . "#bb9af7") (mat . "#ff9e64")
-     (meta . "#86dc2f") (str . "#9ece6a") (suc . "#73daca") (type . "#f1fa8c")
-     (var . "#bb9af7") (war . "#e0af68"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(package-selected-packages
+     '(ace-link add-node-modules-path aggressive-indent auto-compile
+                auto-highlight-symbol avy-jump-helm-line centered-cursor-mode
+                clean-aindent-mode column-enforce-mode company define-word devdocs
+                diminish dired-quick-sort disable-mouse dotenv-mode drag-stuff
+                dumb-jump elisp-def elisp-demos elisp-slime-nav emmet-mode emr
+                eval-sexp-fu evil-anzu evil-args evil-cleverparens evil-collection
+                evil-easymotion evil-escape evil-evilified-state evil-exchange
+                evil-goggles evil-iedit-state evil-indent-plus evil-lion
+                evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
+                evil-numbers evil-surround evil-textobj-line evil-tutor
+                evil-unimpaired evil-visual-mark-mode evil-visualstar
+                expand-region eyebrowse fancy-battery flycheck golden-ratio
+                google-translate grizzl helm-ag helm-comint helm-descbinds
+                helm-make helm-mode-manager helm-org helm-projectile helm-purpose
+                helm-swoop helm-themes helm-xref hide-comnt highlight-indentation
+                highlight-numbers highlight-parentheses hl-todo holy-mode
+                hungry-delete hybrid-mode import-js indent-guide info+ inspector
+                json-mode json-navigator json-reformat json-snatcher link-hint
+                lorem-ipsum macrostep multi-line nameless nerd-icons npm-mode
+                open-junk-file org-superstar overseer page-break-lines paradox
+                password-generator pcre2el popwin quickrun rainbow-delimiters
+                restart-emacs space-doc spaceline spacemacs-purpose-popwin
+                spacemacs-whitespace-cleanup string-edit-at-point
+                string-inflection symbol-overlay symon term-cursor tide toc-org
+                treemacs-evil treemacs-icons-dired treemacs-persp
+                treemacs-projectile typescript-mode undo-fu undo-fu-session
+                uuidgen vi-tilde-fringe volatile-highlights vundo web-beautify
+                web-mode wgrep winum writeroom-mode ws-butler yasnippet))
+   '(spacemacs-theme-custom-colors
+     '((base . "#c0caf5") (border . "#3d59a1") (bg1 . "#1a1b26") (cblk . "#1abc9c")
+       (cblk-bg . "#1a1b26") (cblk-ln-bg . "#3346c7") (cursor . "#a9b1d6")
+       (const . "#ff9e64") (comment . "#565f89") (comment-bg . "#1a1b26")
+       (err . "#db4b4b") (func . "#7aa2f7") (head1 . "#bb9af7")
+       (head2 . "#7aa2f7") (head3-bg . "#ffffff") (highlight . "#3b4261")
+       (lnum . "#3b4261") (keyword . "#bb9af7") (mat . "#ff9e64")
+       (meta . "#86dc2f") (str . "#9ece6a") (suc . "#73daca") (type . "#f1fa8c")
+       (var . "#bb9af7") (war . "#e0af68"))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
