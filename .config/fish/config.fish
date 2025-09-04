@@ -9,8 +9,19 @@ if test -e $HOME/.config/fish/conf.d/secrets.fish
 end
 
 set -gx HOMEBREW_NO_ANALYTICS 1
-# Set default kitty editor
+# Set default editor
 set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx MANPAGER 'nvim +Man!'
+
+# fzf setup.
+set -gx  FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
+--cycle --pointer=▎
+--marker=▎ \
+--bind=alt-s:toggle"
+
+# Disable Apple's save/restore mechanism.
+set -gx SHELL_SESSIONS_DISABLE 1
 
 ## Detect where we're running
 switch (uname)
@@ -122,6 +133,9 @@ else
   # Search Variables   |  Ctrl+V     (V for variable)  |  --variables
   fzf_configure_bindings --directory=\e\cf --variables=\e\cv --git_log=\e\cl --git_status=\e\cs --history=\cr --processes=\e\cp
 end
+
+# fzf shell integration:
+fzf --fish | source
 
 if test -e /Users/traxmaxx/.lmstudio/bin/
 # Added by LM Studio CLI (lms)
