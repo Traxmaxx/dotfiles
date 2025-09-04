@@ -122,7 +122,13 @@ if test $is_macos
   # Search History     |  CMD+R     (R for reverse)   |  --history
   # Search Processes   |  CMD+P (P for process)   |  --processes
   # Search Variables   |  CMD+Alt+V     (V for variable)  |  --variables
-  fzf_configure_bindings --directory=\e\cf --variables=\e\cv --git_log=\e\cl --git_status=\e\cs --history=\cr --processes=\e\cp
+  fzf_configure_bindings \
+    --directory=\e\[9\;F \
+    --git_log=\e\[9\;L \
+    --git_status=\e\[9\;S \
+    --history=\e\[9\;R \
+    --processes=\e\[9\;P \
+    --variables=\e\[9\;V
 else
   # COMMAND            |  DEFAULT KEY SEQUENCE         |  CORRESPONDING OPTION
   # Search Directory   |  Ctrl+Alt+F (F for file)      |  --directory
@@ -131,7 +137,13 @@ else
   # Search History     |  Ctrl+R     (R for reverse)   |  --history
   # Search Processes   |  Ctrl+Alt+P (P for process)   |  --processes
   # Search Variables   |  Ctrl+V     (V for variable)  |  --variables
-  fzf_configure_bindings --directory=\e\cf --variables=\e\cv --git_log=\e\cl --git_status=\e\cs --history=\cr --processes=\e\cp
+  fzf_configure_bindings \
+    --directory=\e\cf \
+    --git_log=\e\cl \
+    --git_status=\e\cs \
+    --history=\cr \
+    --processes=\e\cp \
+    --variables=\e\cv
 end
 
 # fzf shell integration:
