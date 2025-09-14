@@ -8,6 +8,11 @@ if test -e $HOME/.config/fish/conf.d/secrets.fish
 . $HOME/.config/fish/conf.d/secrets.fish
 end
 
+# Nothing to do if not inside an interactive shell.
+if not status is-interactive
+    return 0
+end
+
 set -gx HOMEBREW_NO_ANALYTICS 1
 # Set default editor
 set -gx EDITOR nvim
@@ -41,6 +46,13 @@ if test -e ~/.docker/bin
     set -gx --prepend PATH ~/.docker/bin
   end
 end
+
+# Vi mode.
+set -g fish_key_bindings fish_vi_key_bindings
+set fish_vi_force_cursor 1
+set fish_cursor_default block
+set fish_cursor_insert line
+set fish_cursor_replace_one underscore
  
 ## Init Homebrew and source asdf on OSX
 if test $is_macos
@@ -53,7 +65,6 @@ if test $is_macos
   # /usr/bin occurs before /opt/homebrew/bin in your PATH
 
   # ASDF configuration code
-  # source (brew --prefix asdf)/share/fish/vendor_completions.d/asdf.fish
   if test -z $ASDF_DATA_DIR
       set _asdf_shims "$HOME/.asdf/shims"
   else
@@ -78,6 +89,14 @@ if test $is_macos
 
   if not contains /usr/bin $PATH
     set -gx --append PATH /usr/bin
+  end
+
+  # Add completions from stuff installed with Homebrew.
+  if test -d (brew --prefix)"/share/fish/completions"
+      set -p fish_complete_path (brew --prefix)/share/fish/completions
+  end
+  if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+      set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
   end
 end
 
