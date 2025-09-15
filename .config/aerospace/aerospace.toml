@@ -204,3 +204,25 @@ automatically-unhide-macos-hidden-apps = true
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+[[on-window-detected]]
+    if.app-id = 'net.kovidgoyal.kitty'
+    run = 'move-node-to-workspace 3' # mnemonics 3 - kitty
+[[on-window-detected]]
+    if.app-id = 'com.sublimetext.4'
+    run = 'move-node-to-workspace 4' # mnemonics 4 - IDE
+[[on-window-detected]]
+    if.app-id = 'com.jetbrains.intellij'
+    run = 'move-node-to-workspace 4' # mnemonics 4 - IDE
+[[on-window-detected]] # Float quick access terminal from kitty
+    if.app-id = 'net.kovidgoyal.kitty-quick-access'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float FontBook
+    if.app-id = 'com.apple.FontBook'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float TablePlus
+    if.app-id = 'com.tinyapp.TablePlus'
+    check-further-callbacks = true
+    run = 'layout floating'
