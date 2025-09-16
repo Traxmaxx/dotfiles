@@ -226,3 +226,8 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.tinyapp.TablePlus'
     check-further-callbacks = true
     run = 'layout floating'
+[[on-window-detected]] # Float Ice settings
+    if.app-id = 'com.jordanbaird.Ice'
+    check-further-callbacks = true
+    run = 'layout floating'
+    
