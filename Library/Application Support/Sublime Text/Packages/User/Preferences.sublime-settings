@@ -35,4 +35,6 @@
 	"binary_file_patterns": ["*/node_modules/*", "*/dist/*"],
 	"trim_trailing_white_space_on_save": "all",
 	"trim_only_modified_white_space": false,
+	"auto_complete": true,
+	"update_check": true,
 }
