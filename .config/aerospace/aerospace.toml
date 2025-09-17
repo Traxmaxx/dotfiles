@@ -206,6 +206,12 @@ automatically-unhide-macos-hidden-apps = true
     shift-down = ['volume set 0', 'mode main']
 
 [[on-window-detected]]
+    if.app-id = 'com.apple.mail'
+    run = 'move-node-to-workspace 1' # mnemonics 1 - Mail
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = 'move-node-to-workspace 2' # mnemonics 2 - Messaging
+[[on-window-detected]]
     if.app-id = 'net.kovidgoyal.kitty'
     run = 'move-node-to-workspace 3' # mnemonics 3 - kitty
 [[on-window-detected]]
@@ -230,4 +236,7 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.jordanbaird.Ice'
     check-further-callbacks = true
     run = 'layout floating'
-    
+[[on-window-detected]] # Float Ice settings
+    if.app-id = 'com.nextcloud.desktopclient'
+    check-further-callbacks = true
+    run = 'layout floating'

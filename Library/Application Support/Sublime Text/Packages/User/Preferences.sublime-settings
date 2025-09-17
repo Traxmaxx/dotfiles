@@ -1,0 +1,38 @@
+{
+	"font_size": 13,
+	"font_face": "JetBrainsMono Nerd Font Mono",	
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"index_files": true,
+	"ensure_newline_at_eof_on_save": true,
+	"neovintageous_build_version": 13200,
+	"vintageous_highlighted_yank": true,
+	"vintageous_highlighted_yank_duration": 500,
+	"vintageous_enable_surround": true,	
+	"vintageous_enable_abolish": true,
+	"vintageous_enable_commentary": true,
+	"vintageous_use_sys_clipboard": true,
+	"vintageous_reset_mode_when_switching_tabs": false,
+	"vintageous_lsp_save": true,
+	"vintageous_i_escape_jj": true,
+	"vintageous_handle_keys": {
+    	"<D-f>": false, // CMD+f
+    	"<D-s>": false, // CMD+s
+    	"<D-w>": false, // CMD+w
+    	"<D-a>": false, // CMD+a
+    	"<D-c>": false, // CMD+s
+    	"<D-S-T>": false, // CMD+shift+t
+	},
+	"vintageous_terminal": "kitty",
+    "color_scheme": "Packages/Enki Theme/scheme/Enki-Tokyo-Night.tmTheme",
+    "theme": "Enki-Theme.sublime-theme",
+    "index_exclude_gitignore": true,
+    "relative_line_numbers": true,
+	"folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", ".Trash", ".Trash-*"],
+	// Hack to hide folders from search but not sidebar since above hides both
+	"binary_file_patterns": ["*/node_modules/*", "*/dist/*"],
+	"trim_trailing_white_space_on_save": "all",
+	"trim_only_modified_white_space": false,
+}

@@ -1,0 +1,41 @@
+// Settings in here override those in "${packages}/DoxyDoxygen/Doxy.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"block_layout": {
+		"JsDoc": [
+            {
+                "type": [
+                    "{return:doxy_type_to_description();doxy_The();}."
+                ],
+                "tags": [
+                    "",
+                    "@_brief",
+                    "",
+                    "@type",
+                    ""
+                ],
+                "context": [
+                    { "key": "kind",                                             "operator": "equal",  "operand": "property" }
+                ]
+            },
+            {
+                "tags": [
+                    "",
+                    "@_brief",
+                    "",
+                    "@type",
+                    "@class",
+                    "@deprecated",
+                    //"",
+                    "@param",
+                    //"",
+                    "@return",
+                    ""
+                ],
+                "context": [
+                    { "key": "kind",                                             "operator": "not_equal",  "operand": "" }
+                ]
+            }
+        ],
+	}
+}
