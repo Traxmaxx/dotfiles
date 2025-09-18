@@ -1,6 +1,6 @@
 {
 	"font_size": 13,
-	"font_face": "JetBrainsMono Nerd Font Mono",	
+	"font_face": "JetBrainsMono Nerd Font Mono",
 	"ignored_packages":
 	[
 		"Vintage",
@@ -10,7 +10,7 @@
 	"neovintageous_build_version": 13200,
 	"vintageous_highlighted_yank": true,
 	"vintageous_highlighted_yank_duration": 500,
-	"vintageous_enable_surround": true,	
+	"vintageous_enable_surround": true,
 	"vintageous_enable_abolish": true,
 	"vintageous_enable_commentary": true,
 	"vintageous_use_sys_clipboard": true,
@@ -19,11 +19,13 @@
 	"vintageous_i_escape_jj": true,
 	"vintageous_handle_keys": {
     	"<D-f>": false, // CMD+f
+    	"<D-q>": false, // CMD+q
     	"<D-s>": false, // CMD+s
     	"<D-w>": false, // CMD+w
     	"<D-a>": false, // CMD+a
     	"<D-c>": false, // CMD+s
     	"<D-S-T>": false, // CMD+shift+t
+    	"<D-S-l>": false, // CMD+shift+l for sticky lines during scroll
 	},
 	"vintageous_terminal": "kitty",
     "color_scheme": "Packages/Enki Theme/scheme/Enki-Tokyo-Night.tmTheme",
@@ -35,6 +37,6 @@
 	"binary_file_patterns": ["*/node_modules/*", "*/dist/*"],
 	"trim_trailing_white_space_on_save": "all",
 	"trim_only_modified_white_space": false,
-	"auto_complete": true,
-	"update_check": true,
+	/*"auto_complete": true,*/
+	/*"update_check": true,*/
 }

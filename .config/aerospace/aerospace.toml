@@ -212,6 +212,9 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = 'move-node-to-workspace 2' # mnemonics 2 - Messaging
 [[on-window-detected]]
+    if.app-id = 'com.microsoft.teams2 '
+    run = 'move-node-to-workspace 2' # mnemonics 2 - Messaging
+[[on-window-detected]]
     if.app-id = 'net.kovidgoyal.kitty'
     run = 'move-node-to-workspace 3' # mnemonics 3 - kitty
 [[on-window-detected]]
@@ -220,6 +223,9 @@ automatically-unhide-macos-hidden-apps = true
 [[on-window-detected]]
     if.app-id = 'com.jetbrains.intellij'
     run = 'move-node-to-workspace 4' # mnemonics 4 - IDE
+[[on-window-detected]]
+    if.app-id = 'org.mozilla.firefox '
+    run = 'move-node-to-workspace 5' # mnemonics 5 - Browser
 [[on-window-detected]] # Float quick access terminal from kitty
     if.app-id = 'net.kovidgoyal.kitty-quick-access'
     check-further-callbacks = true
@@ -238,5 +244,29 @@ automatically-unhide-macos-hidden-apps = true
     run = 'layout floating'
 [[on-window-detected]] # Float Ice settings
     if.app-id = 'com.nextcloud.desktopclient'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float Pieces
+    if.app-id = 'com.pieces.x'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float Auth Errors
+    if.app-id = 'com.apple.accessibility.universalAccessAuthWarn'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float Activity Monitor
+    if.app-id = 'com.apple.ActivityMonitor'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float RapidAPI Client
+    if.app-id = 'com.luckymarmot.Paw'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float EQ Mac
+    if.app-id = 'com.bitgapp.eqmac'
+    check-further-callbacks = true
+    run = 'layout floating'
+[[on-window-detected]] # Float Finder
+    if.app-id = 'com.apple.finder'
     check-further-callbacks = true
     run = 'layout floating'
