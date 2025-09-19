@@ -1,8 +1,10 @@
 # run me with
 # brew bundle install
 
-# Tap fonts repo
-tap 'qmk/qmk'
+# Taps
+tap 'qmk/qmk' # QMK
+tap 'albertlauncher/albert' # Albert launcher
+tap 'nikitabobko/tap' # Aerospace tiling window manager macOS
 
 brew 'asdf' # prog-lang version manager
 brew 'bash' # newer bash version on macOS for tmux tokyo-night theme
@@ -17,6 +19,7 @@ brew 'jq' # cli json tool
 brew 'neovim'
 brew 'node'
 brew 'qmk' # keyboard firmware
+brew 'ripgrep'
 brew 'ruby'
 brew 'rust'
 brew 'stow'
@@ -25,3 +28,4 @@ brew 'zellij'
 
 # Install fonts
 cask 'font-jetbrains-mono-nerd-font'
+cask 'aerospace'

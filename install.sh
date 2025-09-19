@@ -4,7 +4,7 @@ set -e
 
 HOME_CONFIG_DIR="$HOME/.config"
 # Source directory (.config.d) in the repository
-SOURCE_CONFIG_DIR=".config.d"
+SOURCE_CONFIG_DIR=".config"
 
 # Detect OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -22,18 +22,10 @@ echo "Setting up dotfiles for $OS..."
 mkdir -p "$HOME_CONFIG_DIR"
 mkdir -p "$HOME/.vim/undodir"  # Create undo directory for Neovim
 
-# Function to update dotfiles without completely replacing configs
-update_dotfiles() {
-    echo "Updating dotfiles..."
-    
-    # Just run the same symlink function since it doesn't delete untracked files
-    create_symlinks
-}
-
 # macOS specific setup
 setup_macos() {
     echo "Setting up macOS environment..."
-    
+
     # Install Homebrew if not installed
     if ! command -v brew >/dev/null 2>&1; then
         echo "Installing Homebrew..."
@@ -55,7 +47,7 @@ setup_macos() {
 # Linux specific setup
 setup_linux() {
     echo "Setting up Linux environment..."
-    
+
     # Install required packages
     if command -v apt-get >/dev/null 2>&1; then
         sudo apt-get update
@@ -95,8 +87,8 @@ setup_linux() {
 # Setup fish shell and plugins
 setup_fish() {
     echo "Setting up fish shell..."
-    
-    # Only create these directories if they weren't already created by create_symlinks
+
+    # Only create these directories if they weren't already created
     # This is a fallback in case the dotfiles repo doesn't contain fish configs
     if [ ! -d "$HOME_CONFIG_DIR/fish/functions" ]; then
         mkdir -p "$HOME_CONFIG_DIR/fish/functions"
@@ -107,13 +99,13 @@ setup_fish() {
     if [ ! -d "$HOME_CONFIG_DIR/fish/conf.d" ]; then
         mkdir -p "$HOME_CONFIG_DIR/fish/conf.d"
     fi
-    
+
     # Install Fisher if not already installed
     if [ ! -f "$HOME_CONFIG_DIR/fish/functions/fisher.fish" ]; then
         echo "Installing Fisher plugin manager..."
         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
     fi
-    
+
     # Update and install plugins if fish is available
     if command -v fish >/dev/null 2>&1; then
         fish -c "fisher update" || echo "Fisher update failed, continuing..."
@@ -130,7 +122,6 @@ main() {
         setup_linux
     fi
 
-    create_symlinks
     setup_fish
 
     echo "Setting fish as default shell..."
