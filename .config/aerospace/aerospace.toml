@@ -215,6 +215,12 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.microsoft.teams2 '
     run = 'move-node-to-workspace 2' # mnemonics 2 - Messaging
 [[on-window-detected]]
+    if.app-id = 'com.automattic.beeper.desktop'
+    run = 'move-node-to-workspace 2' # mnemonics 2 - Beeper
+[[on-window-detected]]
+    if.app-id = 'com.apple.MobileSMS'
+    run = 'move-node-to-workspace 2' # mnemonics 2 - macOS Messages
+[[on-window-detected]]
     if.app-id = 'net.kovidgoyal.kitty'
     run = 'move-node-to-workspace 3' # mnemonics 3 - kitty
 [[on-window-detected]]
