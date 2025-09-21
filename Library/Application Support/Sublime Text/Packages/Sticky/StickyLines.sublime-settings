@@ -1,0 +1,10 @@
+{
+    // Maximum width of the popup
+    "max_width": 1400,
+
+    // Whether to show line numbers in the popup
+    "show_line_numbers": true,
+
+    // Minimum number of lines from top before showing popup
+    "min_lines_to_show": 5,
+}

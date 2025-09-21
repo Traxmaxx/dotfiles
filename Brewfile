@@ -9,6 +9,7 @@ tap 'nikitabobko/tap' # Aerospace tiling window manager macOS
 brew 'asdf' # prog-lang version manager
 brew 'bash' # newer bash version on macOS for tmux tokyo-night theme
 brew 'bat' # smarter cat with syntax highlighting
+brew 'ice' # Statusbar icon manager
 brew 'difftastic'
 brew 'fd' # faster, colorized alternative to find
 brew 'fish' # my friendly shell
@@ -24,6 +25,7 @@ brew 'ruby'
 brew 'rust'
 brew 'stow'
 brew 'stylua'
+brew 'tvnamer'
 brew 'zellij'
 
 # Install fonts

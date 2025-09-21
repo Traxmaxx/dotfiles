@@ -1,0 +1,9 @@
+[
+    {
+        "keys": ["ctrl+shift+s"],
+        "command": "toggle_sticky_lines",
+        "context": [
+            {"key": "setting.is_widget", "operator": "equal", "operand": false}
+        ]
+    }
+]
