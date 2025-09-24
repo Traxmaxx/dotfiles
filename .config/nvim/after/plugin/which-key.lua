@@ -112,7 +112,7 @@ wk.add({
     { "<C-p>", desc = "actions.preview" },
     { "<C-l>", desc = "actions.refresh" },
     { "gx", desc = "actions.open_external" },
-    { "gd", desc = "Toggle file detail view" },
+    { "gD", desc = "Toggle file detail view" },
   },
 })
 

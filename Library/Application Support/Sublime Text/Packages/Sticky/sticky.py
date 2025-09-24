@@ -90,10 +90,10 @@ def sticky_main():
     def find_parent_function(code, top_viewer_line_number):
         parent_line_string = ""
         lines = code.splitlines()
-        
+
 
         top_viewer_line_string = ""
-        try: top_viewer_line_string = lines[top_viewer_line_number] 
+        try: top_viewer_line_string = lines[top_viewer_line_number]
         except: pass
 
         global counter #honestly, it works, I don't wanna touch it haha :D
@@ -140,7 +140,7 @@ def sticky_main():
 
         if original_file == '':
             continue
-        
+
         def magic(line_number_in_question):
 
             content = '''\n''' #WARNING: counting lines from 1 :D

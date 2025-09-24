@@ -74,7 +74,7 @@ require("oil").setup({
     ["gx"] = "actions.open_external",
     ["g."] = { "actions.toggle_hidden", mode = "n" },
     ["g\\"] = { "actions.toggle_trash", mode = "n" },
-    ["gd"] = {
+    ["gD"] = {
       desc = "Toggle file detail view",
       callback = function()
         detail = not detail

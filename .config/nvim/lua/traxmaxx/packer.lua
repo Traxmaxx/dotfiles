@@ -42,6 +42,8 @@ return require("packer").startup(function(use)
     requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzf-native.nvim" } }, -- Plenary: Lua utility functions
   })
 
+  use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
+
   -- Tokyo Night: Modern dark theme with clean design and good contrast
   use({
     "folke/tokyonight.nvim",
@@ -104,7 +106,6 @@ return require("packer").startup(function(use)
   use({
     "williamboman/mason.nvim",
     requires = {
-      { "neovim/nvim-lspconfig" },
       { "williamboman/mason-lspconfig.nvim" },
       -- Snippets
       { "L3MON4D3/LuaSnip" }, -- Snippet engine

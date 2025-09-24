@@ -1,32 +1,4 @@
-if test -e $HOME/.config/fish/themes/tokyonight_night.theme
-. $HOME/.config/fish/themes/tokyonight_night.theme
-end
-if test -e $HOME/.config/fish/conf.d/prompt.fish
-. $HOME/.config/fish/conf.d/prompt.fish
-end
-if test -e $HOME/.config/fish/conf.d/secrets.fish
-. $HOME/.config/fish/conf.d/secrets.fish
-end
-
-# Nothing to do if not inside an interactive shell.
-if not status is-interactive
-    return 0
-end
-
 set -gx HOMEBREW_NO_ANALYTICS 1
-# Set default editor
-set -gx EDITOR nvim
-set -gx VISUAL nvim
-set -gx MANPAGER 'nvim +Man!'
-
-# fzf setup.
-set -gx  FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
---cycle --pointer=▎
---marker=▎ \
---bind=alt-s:toggle"
-
-# Disable Apple's save/restore mechanism.
-set -gx SHELL_SESSIONS_DISABLE 1
 
 ## Detect where we're running
 switch (uname)
@@ -40,6 +12,10 @@ switch (uname)
     end
 end
 
+if test -e $HOME/.config/fish/conf.d/secrets.fish
+. $HOME/.config/fish/conf.d/secrets.fish
+end
+
 ## Add docker to PATH
 if test -e ~/.docker/bin
   if not contains ~/.docker/bin $PATH
@@ -47,14 +23,6 @@ if test -e ~/.docker/bin
   end
 end
 
-# Vi mode.
-set -g fish_key_bindings fish_vi_key_bindings
-set fish_vi_force_cursor 1
-set fish_cursor_default block
-set fish_cursor_insert line
-set fish_cursor_replace_one underscore
-
-## Init Homebrew and source asdf on OSX
 if test $is_macos
   # remove initial /opt/homebrew/bin
   # I currently don't know where this is coming from initially
@@ -90,7 +58,56 @@ if test $is_macos
   if not contains /usr/bin $PATH
     set -gx --append PATH /usr/bin
   end
+end
 
+if test $is_deck
+  if not contains /home/linuxbrew/.linuxbrew/bin $PATH
+    set -gx --prepend PATH /home/linuxbrew/.linuxbrew/bin
+    source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
+  end
+end
+
+if test $is_linux
+  source /opt/asdf-vm/asdf.fish
+end
+
+
+# Nothing to do if not inside an interactive shell.
+if not status is-interactive
+    return 0
+end
+
+if test -e $HOME/.config/fish/themes/tokyonight_night.theme
+. $HOME/.config/fish/themes/tokyonight_night.theme
+end
+
+if test -e $HOME/.config/fish/conf.d/prompt.fish
+. $HOME/.config/fish/conf.d/prompt.fish
+end
+
+# Set default editor
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx MANPAGER 'nvim +Man!'
+
+# fzf setup.
+set -gx  FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
+--cycle --pointer=▎
+--marker=▎ \
+--bind=alt-s:toggle"
+
+# Disable Apple's save/restore mechanism.
+set -gx SHELL_SESSIONS_DISABLE 1
+
+# Vi mode.
+set -g fish_key_bindings fish_vi_key_bindings
+set fish_vi_force_cursor 1
+set fish_cursor_default block
+set fish_cursor_insert line
+set fish_cursor_replace_one underscore
+
+## Init Homebrew and source asdf on OSX
+if test $is_macos
   # Add completions from stuff installed with Homebrew.
   if test -d (brew --prefix)"/share/fish/completions"
       set -p fish_complete_path (brew --prefix)/share/fish/completions
@@ -102,15 +119,12 @@ end
 
 ## Init Homebrew and source asdf on Deck
 if test $is_deck
-  if not contains /home/linuxbrew/.linuxbrew/bin $PATH
-    set -gx --prepend PATH /home/linuxbrew/.linuxbrew/bin
-    source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
-  end
+##
 end
 
 ## Source asdf on Linux
 if test $is_linux
-  source /opt/asdf-vm/asdf.fish
+  ##
 end
 
 if test -e "/Applications/Sublime Text.app/Contents/SharedSupport/bin"

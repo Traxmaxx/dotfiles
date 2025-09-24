@@ -4,4 +4,8 @@
 	"auto_format_on_save": true,
 	"auto_format_on_save_requires_prettier_config": true,
 	"auto_format_on_save_excludes": ["*/node_modules/*"],
+	// "additional_cli_args": {
+    //     "--config": "${project_path}/.prettierrc",
+    // }
+	"node_path": "/Users/alexrosel/.asdf/shims/node",
 }

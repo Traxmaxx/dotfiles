@@ -18,10 +18,6 @@ local yank_group = augroup("HighlightYank", {})
 -- which-key configuration
 -- Timeout settings for key sequence recognition
 -- timeoutlen: Time in milliseconds to wait for a mapped sequence to complete
-vim.o.timeout = true
-vim.o.timeoutlen = 300
--- Disable mouse interactions for keyboard-focused workflow
-vim.o.mouse = ""
 
 -- automatically run :PackerCompile whenever plugins.lua is updated
 vim.cmd([[

@@ -37,6 +37,13 @@
 	"binary_file_patterns": ["*/node_modules/*", "*/dist/*"],
 	"trim_trailing_white_space_on_save": "all",
 	"trim_only_modified_white_space": false,
-	/*"auto_complete": true,*/
-	/*"update_check": true,*/
+	// Global control of gutter icons.
+    "gutter_icons": true,
+    // Disable gutter icons when doing multi-select
+    "no_multi_select_icons": true,
+    // Show brackets in the minimap.
+    "show_in_minimap": true,
+    // When only either the left or right bracket can be found
+    // this defines if the unmatched bracket should be shown.
+    "show_unmatched": true,
 }

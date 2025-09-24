@@ -11,7 +11,7 @@ require("blink.cmp").setup({
 	-- C-k: Toggle signature help (if signature.enabled = true)
 	--
 	-- See :h blink-cmp-config-keymap for defining your own keymap
-
+	-- local lspconfig = require("mason-lspconfig")
 	keymap = { preset = "default" },
 
 	appearance = {

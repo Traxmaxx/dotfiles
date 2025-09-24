@@ -212,7 +212,7 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = 'move-node-to-workspace 2' # mnemonics 2 - Messaging
 [[on-window-detected]]
-    if.app-id = 'com.microsoft.teams2 '
+    if.app-id = 'com.microsoft.teams2'
     run = 'move-node-to-workspace 2' # mnemonics 2 - Messaging
 [[on-window-detected]]
     if.app-id = 'com.automattic.beeper.desktop'
@@ -230,8 +230,11 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.jetbrains.intellij'
     run = 'move-node-to-workspace 4' # mnemonics 4 - IDE
 [[on-window-detected]]
-    if.app-id = 'org.mozilla.firefox '
-    run = 'move-node-to-workspace 5' # mnemonics 5 - Browser
+    if.app-id = 'org.mozilla.firefox'
+    run = 'move-node-to-workspace 5' # mnemonics 5 - Firefox
+[[on-window-detected]]
+    if.app-id = 'app.zen-browser.zen'
+    run = 'move-node-to-workspace 5' # mnemonics 5 - Zen Browser
 [[on-window-detected]] # Float quick access terminal from kitty
     if.app-id = 'net.kovidgoyal.kitty-quick-access'
     check-further-callbacks = true
