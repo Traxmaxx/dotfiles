@@ -42,6 +42,7 @@ return require("packer").startup(function(use)
     requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-fzf-native.nvim" } }, -- Plenary: Lua utility functions
   })
 
+  -- Tab bar of open buffers
   use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
 
   -- Tokyo Night: Modern dark theme with clean design and good contrast
@@ -58,7 +59,7 @@ return require("packer").startup(function(use)
     "folke/trouble.nvim",
     config = function()
       require("trouble").setup({
-        icons = false, -- Disable icons for minimal UI
+        icons = true, -- Disable icons for minimal UI
         -- Default settings are used, can be customized below
         -- refer to the configuration section in Trouble documentation
       })
@@ -78,6 +79,20 @@ return require("packer").startup(function(use)
     requires = {
       "nvim-treesitter/nvim-treesitter-context",
     },
+  })
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
   })
 
   -- Icons and UI enhancements
@@ -122,7 +137,7 @@ return require("packer").startup(function(use)
 
   -- Additional Utilities
   use("folke/zen-mode.nvim") -- Distraction-free coding mode
-  use("github/copilot.vim") -- GitHub Copilot AI code suggestions
+  -- use("github/copilot.vim") -- GitHub Copilot AI code suggestions
   use("eandrju/cellular-automaton.nvim") -- Fun visualizations based on cellular automata
   use("laytan/cloak.nvim") -- Hide sensitive information in files
   use("luckasRanarison/tailwind-tools.nvim") -- TailwindCSS autocompletion
