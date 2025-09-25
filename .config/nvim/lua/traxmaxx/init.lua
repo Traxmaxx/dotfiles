@@ -14,6 +14,10 @@ local TraxmaxxGroup = augroup("Traxmaxx", {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
+local function open_nvim_tree()
+    -- open the tree
+    require("nvim-tree.api").tree.open()
+end
 
 -- which-key configuration
 -- Timeout settings for key sequence recognition
@@ -54,6 +58,10 @@ autocmd({ "BufWritePre" }, {
     pattern = "*",
     command = [[%s/\s\+$//e]], -- Vim command to strip trailing whitespace
 })
+
+-- The VimEnter event should be used for the startup functionality:
+-- nvim-tree setup will have been called and other plugins will have started. It's the best time for you to define the behaviour you desire.
+autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 -- Netrw (built-in file explorer) configuration
 vim.g.netrw_browse_split = 0 -- Open files in the same window

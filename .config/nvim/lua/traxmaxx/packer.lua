@@ -116,6 +116,12 @@ return require("packer").startup(function(use)
   })
   use("mbbill/undotree") -- Visual undo history
   use("tpope/vim-fugitive") -- Git integration
+  use({
+    "nvim-tree/nvim-tree.lua",
+    requires = {
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+  }) -- Left file tree
 
   -- LSP
   use({
