@@ -11,24 +11,48 @@ require("traxmaxx.remap")
 -- Autocommand groups allow organizing related autocommands together
 local augroup = vim.api.nvim_create_augroup
 local TraxmaxxGroup = augroup("Traxmaxx", {})
-
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
+
 local function open_nvim_tree(data)
-    -- buffer is a real file on the disk
-    local real_file = vim.fn.filereadable(data.file) == 1
+  local is_dir  = vim.fn.isdirectory(data.file) == 1
+  local is_file = vim.fn.filereadable(data.file) == 1
+  local bt      = vim.bo[data.buf].buftype
+  local ft      = vim.bo[data.buf].filetype
 
-    -- buffer is a [No Name]
-    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+  -- skip special buffers (commit, help, etc.), EXCEPT oil
+  if bt ~= "" and ft ~= "oil" then
+    return
+  end
 
-    if not real_file and not no_name then
-        return
-    end
+  if is_dir then
+    vim.cmd.cd(data.file)
+    require("nvim-tree.api").tree.open()
+    return
+  end
 
-    -- open the tree, find the file but don't focus it
+  if is_file then
     require("nvim-tree.api").tree.toggle({ focus = false, find_file = true })
+    return
+  end
+
+  -- explicit oil case (for `nvim .`)
+  if ft == "oil" then
+    require("nvim-tree.api").tree.open()
+    vim.cmd.wincmd("p") -- go back to oil window
+  end
 end
 
+-- Define a function to close the buffer but stay in window
+local function close_buffer()
+  local prev = vim.fn.bufnr("#")
+  vim.cmd("bd")
+  if prev > 0 and vim.fn.buflisted(prev) == 1 then
+    vim.cmd("b " .. prev)
+  end
+end
+
+vim.keymap.set("n", "<leader>q", close_buffer, { noremap = true, silent = true, desc = "Close buffer and go to previous" })
 -- which-key configuration
 -- Timeout settings for key sequence recognition
 -- timeoutlen: Time in milliseconds to wait for a mapped sequence to complete
