@@ -98,7 +98,7 @@ wk.add({
     -- { "<leader>f", [["_f]], desc = "Format file or selection" }, -- Format command
     { [["_u]], desc = "Standard undo command" }, -- Undo last change
     { "<leader>y", [["+y]], desc = "Yank to system clipboard" }, -- Copy to system clipboard
-    { "<leader>f", vim.lsp.buf.format, desc = "Format with LSP" }, -- Format using LSP
+    { "<leader>ft", vim.lsp.buf.format, desc = "Format with LSP" }, -- Format using LSP
     { "<C-k>", "<cmd>cnext<CR>zz", desc = "Next quickfix item" }, -- Next quickfix item, centered
     { "<C-j>", "<cmd>cprev<CR>zz", desc = "Previous quickfix item" }, -- Previous quickfix item, centered
     { "<leader>k", "<cmd>lnext<CR>zz", desc = "Next location list item" }, -- Next location list item
