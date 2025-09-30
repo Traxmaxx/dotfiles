@@ -11,6 +11,8 @@ brew 'bash' # newer bash version on macOS for tmux tokyo-night theme
 brew 'bat' # smarter cat with syntax highlighting
 brew 'ice' # Statusbar icon manager
 brew 'difftastic'
+brew 'eslint'
+brew 'eslint_d'
 brew 'fd' # faster, colorized alternative to find
 brew 'fish' # my friendly shell
 brew 'fzf' # fuzzy finder that powers fzf.fish plugin
@@ -19,10 +21,14 @@ brew 'go'
 brew 'jq' # cli json tool
 brew 'neovim'
 brew 'node'
+brew 'prettier'
+brew 'prettierd'
 brew 'qmk' # keyboard firmware
 brew 'ripgrep'
 brew 'ruby'
 brew 'rust'
+brew 'rustfmt'
+brew 'selene'
 brew 'stow'
 brew 'stylua'
 brew 'tvnamer'
