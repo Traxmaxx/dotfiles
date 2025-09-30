@@ -31,6 +31,7 @@
 		"LSP-lua",
 		"LSP-prisma",
 		"LSP-pylsp",
+		"LSP-ruff",
 		"LSP-tailwindcss",
 		"LSP-typescript",
 		"LSP-yaml",
