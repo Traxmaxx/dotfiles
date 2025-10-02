@@ -137,8 +137,12 @@ return require("packer").startup(function(use)
 	use({
 		"saghen/blink.cmp",
 		-- optional: provides snippets for the snippet source
-		requires = { "rafamadriz/friendly-snippets" },
+		requires = { "rafamadriz/friendly-snippets", "onsails/lspkind.nvim" },
 		tag = "v1.*",
+	})
+
+	use({
+		"onsails/lspkind.nvim",
 	})
 
 	-- Formatters

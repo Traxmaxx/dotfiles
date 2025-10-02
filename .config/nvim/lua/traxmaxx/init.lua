@@ -58,6 +58,10 @@ vim.keymap.set(
 	close_buffer,
 	{ noremap = true, silent = true, desc = "Close buffer and go to previous" }
 )
+
+vim.keymap.set("n", "<leader>ft", function()
+	open_nvim_tree()
+end, { noremap = true, silent = true, desc = "Open file tree" })
 -- which-key configuration
 -- Timeout settings for key sequence recognition
 -- timeoutlen: Time in milliseconds to wait for a mapped sequence to complete
