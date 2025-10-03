@@ -9,8 +9,6 @@ if true then return {} end
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -24,6 +22,11 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "tokyonight",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
   },
 
