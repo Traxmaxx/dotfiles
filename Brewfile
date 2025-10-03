@@ -19,6 +19,7 @@ brew 'fzf' # fuzzy finder that powers fzf.fish plugin
 brew 'fzf-make' # faster version of fzf (fzf-native) for vim telescope plugin
 brew 'go'
 brew 'jq' # cli json tool
+brew 'luarocks'
 brew 'neovim'
 brew 'node'
 brew 'prettier'
@@ -32,6 +33,7 @@ brew 'selene'
 brew 'stow'
 brew 'stylua'
 brew 'tvnamer'
+brew 'wget'
 brew 'zellij'
 
 # Install fonts
