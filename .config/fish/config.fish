@@ -71,11 +71,21 @@ if test $is_linux
   source /opt/asdf-vm/asdf.fish
 end
 
+# fzf setup.
+set -gx  FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
+--cycle --pointer=▎
+--marker=▎ \
+--bind=alt-s:toggle"
 
-# Nothing to do if not inside an interactive shell.
+
+######################################################
+# Nothing to do if not inside an interactive shell.###
+# ####################################################
 if not status is-interactive
     return 0
 end
+
+# Interactive parts
 
 if test -e $HOME/.config/fish/themes/tokyonight_night.theme
 . $HOME/.config/fish/themes/tokyonight_night.theme
@@ -90,11 +100,6 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx MANPAGER 'nvim +Man!'
 
-# fzf setup.
-set -gx  FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
---cycle --pointer=▎
---marker=▎ \
---bind=alt-s:toggle"
 
 # Disable Apple's save/restore mechanism.
 set -gx SHELL_SESSIONS_DISABLE 1
