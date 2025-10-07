@@ -4,10 +4,11 @@ return {
     lazy = true,
     opts = {
       style = "night",
+      transparent = true,
+      lualine_bold = true,
     },
   },
 
-  -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
