@@ -35,9 +35,10 @@ keymap = {
       selection = { preselect = false, auto_insert = true },
     },
   },
-
-  ["<C-h>"] = { ":KittyNavigateLeft<CR>", noremap = true, silent = true, desc = "Kitty Navigate Left" },
-  ["<C-j>"] = { ":KittyNavigateDown<CR>", noremap = true, silent = true, desc = "Kitty Navigate Down" },
-  ["<C-k>"] = { ":KittyNavigateUp<CR>", noremap = true, silent = true, desc = "Kitty Navigate Up" },
-  ["<C-l>"] = { ":KittyNavigateRight<CR>", noremap = true, silent = true, desc = "Kitty Navigate Right" },
 }
+
+vim.keymap.set("n", "<C-h>", ":KittyNavigateLeft<CR>", { noremap = true, desc = "Kitty Navigate Left" })
+vim.keymap.set("n", "<C-j>", ":KittyNavigateDown<CR>", { noremap = true, desc = "Kitty Navigate Down" })
+vim.keymap.set("n", "<C-k>", ":KittyNavigateUp<CR>", { noremap = true, desc = "Kitty Navigate Up" })
+vim.keymap.set("n", "<C-l>", ":KittyNavigateRight<CR>", { noremap = true, desc = "Kitty Navigate Right" })
+vim.keymap.set("x", "<leader>p", '"_dP', { noremap = true, desc = "Paste replace and keep" })
