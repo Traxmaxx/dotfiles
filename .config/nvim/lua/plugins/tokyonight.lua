@@ -6,6 +6,10 @@ return {
       style = "night",
       transparent = true,
       lualine_bold = true,
+      -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+      on_colors = function(colors)
+        colors.cursor = "#f7768e"
+      end,
     },
   },
 
