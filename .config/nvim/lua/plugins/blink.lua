@@ -11,5 +11,6 @@ return {
         },
       },
     },
+    build = "cargo build --release",
   },
 }
