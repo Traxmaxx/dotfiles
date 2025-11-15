@@ -250,11 +250,15 @@ run = 'layout floating'
 if.app-id = 'com.tinyapp.TablePlus'
 check-further-callbacks = true
 run = 'layout floating'
+[[on-window-detected]] # Float Datagrip
+if.app-id = 'com.jetbrains.datagrip'
+check-further-callbacks = true
+run = 'layout floating'
 [[on-window-detected]] # Float Ice settings
 if.app-id = 'com.jordanbaird.Ice'
 check-further-callbacks = true
 run = 'layout floating'
-[[on-window-detected]] # Float Ice settings
+[[on-window-detected]] # Float Nextcloud
 if.app-id = 'com.nextcloud.desktopclient'
 check-further-callbacks = true
 run = 'layout floating'
@@ -288,5 +292,9 @@ check-further-callbacks = true
 run = 'layout floating'
 [[on-window-detected]] # Float Color Picker
 if.app-id = 'com.sindresorhus.Color-Picker'
+check-further-callbacks = true
+run = 'layout floating'
+[[on-window-detected]] # Float Claude for Desktop
+if.app-id = 'com.anthropic.claudefordesktop'
 check-further-callbacks = true
 run = 'layout floating'

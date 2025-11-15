@@ -5,7 +5,7 @@
 	[
 		"Vintage",
 	],
-	"index_files": true,
+	"index_files": false,
 	"word_wrap": "false",
 	"ensure_newline_at_eof_on_save": true,
 	"neovintageous_build_version": 13200,
