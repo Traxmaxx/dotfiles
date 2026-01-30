@@ -3,7 +3,7 @@
 # This template file has been automatically created at the following
 # path since Ghostty couldn't find any existing config files on your system:
 #
-#   /Users/traxmaxx/Library/Application Support/com.mitchellh.ghostty/config
+#   ~/.config/ghostty/config
 #
 # The template does not set any default options, since Ghostty ships
 # with sensible defaults for all options. Users should only need to set
@@ -65,7 +65,7 @@ alpha-blending = linear-corrected
 background-opacity = 0.96
 background-blur-radius = 40
 
-custom-shader = /Users/traxmaxx/Sites/private/ghostty-shaders/bloom025.glsl
+custom-shader = shaders/bloom025.glsl
 custom-shader-animation = true
 
 cursor-style = "bar"
@@ -78,7 +78,7 @@ font-thicken = true
 
 macos-titlebar-style = tabs
 
-theme = "tokyonight-storm"
+theme = "TokyoNight"
 
 
 # # The opacity level (opposite of transparency) of an unfocused split. Unfocused splits by default are slightly faded out to make it easier to see which split is focused. To disable this feature, set this value to 1.
