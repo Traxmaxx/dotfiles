@@ -66,6 +66,8 @@ background-opacity = 0.96
 background-blur-radius = 40
 
 custom-shader = shaders/bloom025.glsl
+custom-shader = shaders/cursor_blaze_no_trail.glsl
+custom-shader = shaders/cursor_smear.glsl
 custom-shader-animation = true
 
 cursor-style = "bar"
