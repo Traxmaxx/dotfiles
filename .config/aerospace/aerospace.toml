@@ -227,6 +227,9 @@ run = 'move-node-to-workspace 2'  # mnemonics 2 - macOS Messages
 if.app-id = 'net.kovidgoyal.kitty'
 run = 'move-node-to-workspace 3'   # mnemonics 3 - kitty
 [[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace 3'   # mnemonics 3 - kitty
+[[on-window-detected]]
 if.app-id = 'com.sublimetext.4'
 run = 'move-node-to-workspace 4' # mnemonics 4 - IDE
 [[on-window-detected]]

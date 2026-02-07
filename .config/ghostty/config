@@ -100,7 +100,7 @@ clipboard-trim-trailing-spaces=true
 clipboard-paste-protection = false
 
 # # Confirms that a surface should be closed before closing it
-confirm-close-surface = false
+confirm-close-surface = true
 
 # # Enable URL matching. URLs are matched on hover with control (Linux) or super (macOS) pressed
 link-url = true
