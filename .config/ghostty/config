@@ -48,7 +48,7 @@
 # # Whether to enable shell integration auto-injection or not
 shell-integration = fish
 # # Shell integration features to enable. These require our shell integration to be loaded, either automatically via shell-integration or manually.
-shell-integration-features = no-cursor
+shell-integration-features = ssh-terminfo,ssh-env
 
 # Style the looks of Ghostty
 # ==========================

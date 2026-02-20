@@ -1,3 +1,6 @@
+# Ignore Claude gsd planning files
+.planning/*
+
 .node-version
 .syntastic_classpath
 .idea
