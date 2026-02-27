@@ -55,18 +55,30 @@ The repository follows this structure:
 
 ```
 dotfiles/
-├── .config/           # Configuration files that will be symlinked to ~/.config/
-│   ├── fish/          # Fish shell configuration
-│   ├── nvim/          # Neovim configuration
-│   └── ...            # Other config directories
-├── .gitignore_global  # System wide gitignore file
-├── .githelpers        # Git helper functions
-├── .asdfrc            # System wide ASDF configuration
-├── .tool-versions     # System wide ASDF tool versions
-├── .stow-local-ignore # List of files and directories Stow should ignore
-├── .stowrc            # Default parameters for stow command when running it from the project root
-├── Brewfile           # Brew packages to be installed
-└── install.sh         # Installation script
+├── .config/                       # Configuration files symlinked to ~/.config/
+│   ├── aerospace/                 # macOS window manager config
+│   ├── firefox/                   # Firefox user preferences
+│   ├── fish/                      # Fish shell config, completions, functions
+│   ├── fontconfig/                # Font configuration
+│   ├── ghostty/                   # Ghostty terminal emulator
+│   ├── helix/                     # Helix editor config
+│   ├── i3/                        # i3 window manager config (Linux)
+│   ├── joplin-desktop/            # Joplin notes app styling
+│   ├── kitty/                     # Kitty terminal emulator config
+│   ├── nvim/                      # Neovim editor configuration
+│   ├── opencode/                  # OpenCode AI agent configs
+│   ├── tmux/                      # Tmux terminal multiplexer
+│   └── zellij/                    # Zellij terminal multiplexer
+├── Library/                       # macOS application configs (Sublime Text)
+├── .asdfrc                        # ASDF version manager config
+├── .ideavimrc                     # IntelliJ IDEA Vim mode config
+├── .spacemacs                     # Spacemacs editor config
+├── .stow-local-ignore             # Files ignored by GNU Stow
+├── .stowrc                        # Stow command defaults
+├── .tool-versions                 # ASDF tool version specifications
+├── Brewfile                       # Homebrew package list
+├── install.sh                     # Full installation script
+└── screenshots/                    # Documentation screenshots
 ```
 
 ## Customization

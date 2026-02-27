@@ -212,3 +212,11 @@ if test -e /Users/traxmaxx/.lmstudio/bin/
 # Added by LM Studio CLI (lms)
   set -gx PATH $PATH /Users/traxmaxx/.lmstudio/bin
 end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/traxmaxx/.lmstudio/bin
+# End of LM Studio CLI section
+
+
+# opencode
+fish_add_path /home/traxmaxx/.opencode/bin
