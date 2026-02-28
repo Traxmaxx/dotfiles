@@ -110,3 +110,7 @@ mouse-scroll-multiplier = 1
 
 # # Key bindings
 keybind = global:f12=toggle_quick_terminal
+keybind = ctrl+alt+arrow_down=goto_split:down
+keybind = ctrl+alt+arrow_up=goto_split:up
+keybind = ctrl+alt+arrow_left=goto_split:left
+keybind = ctrl+alt+arrow_right=goto_split:right
