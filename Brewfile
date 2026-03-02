@@ -9,7 +9,6 @@ tap 'nikitabobko/tap' # Aerospace tiling window manager macOS
 brew 'asdf' # prog-lang version manager
 brew 'bash' # newer bash version on macOS for tmux tokyo-night theme
 brew 'bat' # smarter cat with syntax highlighting
-brew 'ice' # Statusbar icon manager
 brew 'difftastic'
 brew 'eslint'
 brew 'eslint_d'
@@ -19,20 +18,24 @@ brew 'fzf' # fuzzy finder that powers fzf.fish plugin
 brew 'fzf-make' # faster version of fzf (fzf-native) for vim telescope plugin
 brew 'go'
 brew 'jq' # cli json tool
+brew 'lua-language-server'
 brew 'luarocks'
 brew 'neovim'
 brew 'node'
 brew 'prettier'
 brew 'prettierd'
+brew 'pyright'
 brew 'qmk' # keyboard firmware
 brew 'ripgrep'
 brew 'ruby'
 brew 'rust'
 brew 'rustfmt'
+brew 'rust-analyzer'
 brew 'selene'
 brew 'stow'
 brew 'stylua'
 brew 'tvnamer'
+brew 'typescript-language-server'
 brew 'wget'
 brew 'zellij'
 

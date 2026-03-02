@@ -46,3 +46,5 @@
     	gpgsign = false
 [pull]
 	default = current
+[init]
+	defaultBranch = main
