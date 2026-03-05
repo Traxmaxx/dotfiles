@@ -1,5 +1,8 @@
 # Ignore Claude gsd planning files
 .planning/*
+# Dolt database files (added by bd init)
+.dolt/
+*.db
 
 .node-version
 .syntastic_classpath
