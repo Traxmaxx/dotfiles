@@ -1,8 +1,8 @@
-theme = "onedark"
+theme = "tokyonight"
 
 [editor]
 line-number = "relative"
-mouse = false
+mouse = true
 
 [editor.cursor-shape]
 insert = "bar"
