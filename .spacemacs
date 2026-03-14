@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(typescript
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -64,10 +64,10 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '((tokyonight-themes :location (recipe :fetcher git :url "https://github.com/xuchengpeng/tokyonight-themes")))
 
    ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages '()
+   dotspacemacs-frozen-packages '(tokyonight-themes)
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
@@ -181,7 +181,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil, show file icons for entries and headings on Spacemacs home buffer.
    ;; This has no effect in terminal or if "nerd-icons" package or the font
    ;; is not installed. (default nil)
-   dotspacemacs-startup-buffer-show-icons t
+   dotspacemacs-startup-buffer-show-icons nil
 
    ;; Default major mode for a new empty buffer. Possible values are mode
    ;; names such as `text-mode'; and `nil' to use Fundamental mode.
@@ -209,8 +209,7 @@ It should only modify the values of Spacemacs settings."
    ;; package can be defined with `:package', or a theme can be defined with
    ;; `:location' to download the theme package, refer the themes section in
    ;; DOCUMENTATION.org for the full theme specifications.
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(tokyonight-storm)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -230,13 +229,13 @@ It should only modify the values of Spacemacs settings."
    ;; fixed-pitch faces. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("JetBrainsMono Nerd Font Mono"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 10.0
                                :weight normal
                                :width normal)
 
    ;; Default icons font, it can be `all-the-icons' or `nerd-icons'.
-   dotspacemacs-default-icons-font 'nerd-icons
+   dotspacemacs-default-icons-font 'all-the-icons
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -324,6 +323,14 @@ It should only modify the values of Spacemacs settings."
    ;; displays the buffer in a same-purpose window even if the buffer can be
    ;; displayed in the current window. (default nil)
    dotspacemacs-switch-to-buffer-prefers-purpose nil
+
+   ;; Make consecutive tab key presses after commands such as
+   ;; `spacemacs/alternate-buffer' (SPC TAB) cycle through previous
+   ;; buffers/windows/etc. Please see the option's docstring for more information.
+   ;; Set the option to t in order to enable cycling for all current and
+   ;; future cycling commands. Alternatively, choose a subset of the currently
+   ;; supported commands: '(alternate-buffer alternate-window). (default nil)
+   dotspacemacs-enable-cycling nil
 
    ;; Whether side windows (such as those created by treemacs or neotree)
    ;; are kept or minimized by `spacemacs/toggle-maximize-window' (SPC w m).
@@ -458,16 +465,15 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-persistent-server nil
 
    ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
-   ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   ;; tool of the list. Supported tools are `rg', `ag', `ack' and `grep'.
+   ;; (default '("rg" "ag" "ack" "grep"))
+   dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
 
    ;; The backend used for undo/redo functionality. Possible values are
-   ;; `undo-fu', `undo-redo' and `undo-tree' see also `evil-undo-system'.
+   ;; `undo-redo', `undo-fu' and `undo-tree' see also `evil-undo-system'.
    ;; Note that saved undo history does not get transferred when changing
-   ;; your undo system. The default is currently `undo-fu' as `undo-tree'
-   ;; is not maintained anymore and `undo-redo' is very basic."
-   dotspacemacs-undo-system 'undo-fu
+   ;; your undo system from or to undo-tree. (default `undo-redo')
+   dotspacemacs-undo-system 'undo-redo
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
@@ -558,34 +564,6 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-
-  (custom-set-variables
-   '(spacemacs-theme-custom-colors
-     '((base . "#c0caf5")
-       (border . "#3d59a1")
-       (bg1 . "#1a1b26")
-       (cblk . "#1abc9c")
-       (cblk-bg . "#1a1b26")
-       (cblk-ln-bg . "#3346c7")
-       (cursor . "#a9b1d6")
-       (const . "#ff9e64")
-       (comment  . "#565f89")
-       (comment-bg . "#1a1b26")
-       (err . "#db4b4b")
-       (func . "#7aa2f7")
-       (head1 . "#bb9af7")
-       (head2 . "#7aa2f7")
-       (head3-bg . "#ffffff")
-       (highlight . "#3b4261")
-       (lnum . "#3b4261")
-       (keyword . "#bb9af7")
-       (mat . "#ff9e64")
-       (meta . "#86dc2f")
-       (str . "#9ece6a")
-       (suc . "#73daca")
-       (type . "#f1fa8c")
-       (var . "#bb9af7")
-       (war . "#e0af68"))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -599,58 +577,3 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(package-selected-packages
-     '(ace-link add-node-modules-path aggressive-indent auto-compile
-                auto-highlight-symbol avy-jump-helm-line centered-cursor-mode
-                clean-aindent-mode column-enforce-mode company define-word devdocs
-                diminish dired-quick-sort disable-mouse dotenv-mode drag-stuff
-                dumb-jump elisp-def elisp-demos elisp-slime-nav emmet-mode emr
-                eval-sexp-fu evil-anzu evil-args evil-cleverparens evil-collection
-                evil-easymotion evil-escape evil-evilified-state evil-exchange
-                evil-goggles evil-iedit-state evil-indent-plus evil-lion
-                evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
-                evil-numbers evil-surround evil-textobj-line evil-tutor
-                evil-unimpaired evil-visual-mark-mode evil-visualstar
-                expand-region eyebrowse fancy-battery flycheck golden-ratio
-                google-translate grizzl helm-ag helm-comint helm-descbinds
-                helm-make helm-mode-manager helm-org helm-projectile helm-purpose
-                helm-swoop helm-themes helm-xref hide-comnt highlight-indentation
-                highlight-numbers highlight-parentheses hl-todo holy-mode
-                hungry-delete hybrid-mode import-js indent-guide info+ inspector
-                json-mode json-navigator json-reformat json-snatcher link-hint
-                lorem-ipsum macrostep multi-line nameless nerd-icons npm-mode
-                open-junk-file org-superstar overseer page-break-lines paradox
-                password-generator pcre2el popwin quickrun rainbow-delimiters
-                restart-emacs space-doc spaceline spacemacs-purpose-popwin
-                spacemacs-whitespace-cleanup string-edit-at-point
-                string-inflection symbol-overlay symon term-cursor tide toc-org
-                treemacs-evil treemacs-icons-dired treemacs-persp
-                treemacs-projectile typescript-mode undo-fu undo-fu-session
-                uuidgen vi-tilde-fringe volatile-highlights vundo web-beautify
-                web-mode wgrep winum writeroom-mode ws-butler yasnippet))
-   '(spacemacs-theme-custom-colors
-     '((base . "#c0caf5") (border . "#3d59a1") (bg1 . "#1a1b26") (cblk . "#1abc9c")
-       (cblk-bg . "#1a1b26") (cblk-ln-bg . "#3346c7") (cursor . "#a9b1d6")
-       (const . "#ff9e64") (comment . "#565f89") (comment-bg . "#1a1b26")
-       (err . "#db4b4b") (func . "#7aa2f7") (head1 . "#bb9af7")
-       (head2 . "#7aa2f7") (head3-bg . "#ffffff") (highlight . "#3b4261")
-       (lnum . "#3b4261") (keyword . "#bb9af7") (mat . "#ff9e64")
-       (meta . "#86dc2f") (str . "#9ece6a") (suc . "#73daca") (type . "#f1fa8c")
-       (var . "#bb9af7") (war . "#e0af68"))))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
