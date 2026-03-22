@@ -220,3 +220,4 @@ set -gx PATH $PATH /home/traxmaxx/.lmstudio/bin
 
 # opencode
 fish_add_path /home/traxmaxx/.opencode/bin
+
