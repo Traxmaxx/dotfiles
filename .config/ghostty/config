@@ -75,10 +75,10 @@ cursor-style-blink = true
 cursor-text = cell-foreground
 cursor-click-to-move = true
 
-font-family =  "JetBrainsMono Nerd Font Mono"
+font-family =  "Zenbones Mono"
 font-feature = "liga, salt"
-font-size = 12.5
-font-thicken = true
+font-size = 14
+font-thicken = false
 
 macos-titlebar-style = tabs
 
