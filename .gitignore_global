@@ -3,6 +3,7 @@
 # Dolt database files (added by bd init)
 .dolt/
 *.db
+.beads-credential-key
 
 .node-version
 .syntastic_classpath
