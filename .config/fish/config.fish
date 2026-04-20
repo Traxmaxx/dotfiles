@@ -13,7 +13,7 @@ switch (uname)
 end
 
 if test -e $HOME/.config/fish/conf.d/secrets.fish
-    . $HOME/.config/fish/conf.d/secrets.fish
+    source $HOME/.config/fish/conf.d/secrets.fish
 end
 
 ## Add docker to PATH
@@ -33,7 +33,7 @@ if test $is_macos
     # /usr/bin occurs before /opt/homebrew/bin in your PATH
 
     # ASDF configuration code
-    if test -z $ASDF_DATA_DIR
+    if test -z "$ASDF_DATA_DIR"
         set _asdf_shims "$HOME/.asdf/shims"
     else
         set _asdf_shims "$ASDF_DATA_DIR/shims"
@@ -73,7 +73,7 @@ if test $is_linux
     end
 
     # ASDF configuration code
-    if test -z $ASDF_DATA_DIR
+    if test -z "$ASDF_DATA_DIR"
         set _asdf_shims "$HOME/.asdf/shims"
     else
         set _asdf_shims "$ASDF_DATA_DIR/shims"
@@ -105,13 +105,13 @@ if not status is-interactive
     return 0
 end
 
-if status is-interactive
-    if type -q zellij
-        if [ "$TERM" = xterm-ghostty ]
-            eval (zellij setup --generate-auto-start fish | string collect)
-        end
-    end
-end
+# if status is-interactive
+#     if type -q zellij
+#         if [ "$TERM" = xterm-ghostty ]
+#             eval (zellij setup --generate-auto-start fish | string collect)
+#         end
+#     end
+# end
 
 # Interactive parts
 
@@ -140,6 +140,7 @@ set fish_cursor_replace_one underscore
 
 ## Init Homebrew and source asdf on OSX
 if test $is_macos
+    #set -g aws_completer "/usr/local/bin/aws_completer"
     # Add completions from stuff installed with Homebrew.
     if test -d (brew --prefix)"/share/fish/completions"
         set -p fish_complete_path (brew --prefix)/share/fish/completions
