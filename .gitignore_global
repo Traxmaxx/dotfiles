@@ -1,9 +1,11 @@
+CLAUDE.local.md
 # Ignore Claude gsd planning files
 .planning/*
 # Dolt database files (added by bd init)
 .dolt/
 *.db
 .beads-credential-key
+.beads/proxieddb/
 
 .node-version
 .syntastic_classpath

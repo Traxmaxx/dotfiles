@@ -16,6 +16,13 @@ if test -e $HOME/.config/fish/conf.d/secrets.fish
     source $HOME/.config/fish/conf.d/secrets.fish
 end
 
+## GitHub MCP reads its bearer token from this var; pull it from the gh keyring.
+## Skipped if gh is missing or logged out, so an empty value can't clobber a manual PAT.
+if command -q gh
+    set -l _gh_token (gh auth token 2>/dev/null)
+    test -n "$_gh_token" && set -gx GITHUB_PERSONAL_ACCESS_TOKEN $_gh_token
+end
+
 ## Add docker to PATH
 if test -e ~/.docker/bin
     if not contains ~/.docker/bin $PATH

@@ -43,7 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 
 # Stay on the bleeding edge!
-auto-update-channel = tip
+# auto-update-channel = tip
 
 # Shell Integration
 # ==========================
