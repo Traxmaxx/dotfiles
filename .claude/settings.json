@@ -369,7 +369,6 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "Notion@claude-plugins-official": true,
     "church@church": true,
     "clangd-lsp@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
@@ -382,7 +381,6 @@
     "pr-review-toolkit@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "slack@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "ponytail@ponytail": true,
     "datadog@claude-plugins-official": true
