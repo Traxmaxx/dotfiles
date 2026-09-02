@@ -86,6 +86,8 @@ macos-titlebar-style = tabs
 
 theme = "TokyoNight"
 
+# Try to get sidekick focus and select issues under control
+mouse-shift-capture = never
 
 # # The opacity level (opposite of transparency) of an unfocused split. Unfocused splits by default are slightly faded out to make it easier to see which split is focused. To disable this feature, set this value to 1.
 unfocused-split-opacity = 1.0

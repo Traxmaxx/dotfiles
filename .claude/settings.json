@@ -3,6 +3,7 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
     "CLAUDE_CODE_NO_FLICKER": "1",
+    "CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN": "1",
     "DISABLE_AUTOUPDATER": "1",
     "ENABLE_LSP_TOOL": "1",
     "FORCE_AUTOUPDATE_PLUGINS": "1"
@@ -383,7 +384,9 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "ponytail@ponytail": true,
-    "datadog@claude-plugins-official": true
+    "datadog@claude-plugins-official": true,
+    "caveman@caveman": true,
+    "humanizer@humanizer": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
@@ -391,9 +394,24 @@
         "source": "github",
         "repo": "DietrichGebert/ponytail"
       }
+    },
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "humanizer": {
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
+  "theme": "auto",
+  "editorMode": "normal",
+  "terminalProgressBarEnabled": false,
   "prompt": ""
 }
