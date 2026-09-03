@@ -1,0 +1,17 @@
+onboarding = false
+
+[ui]
+show_agent_labels_on_pane_borders = false
+
+# Reclaim the scrollbar column so Shift+drag selections in the host terminal don't
+# pick up the scrollbar glyphs.
+pane_scrollbars = false
+
+# Uncomment if border glyphs still end up inside selections.
+# pane_outer_borders = false
+
+[ui.sound]
+enabled = false
+
+[experimental]
+pane_history = true

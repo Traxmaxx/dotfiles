@@ -87,7 +87,13 @@ macos-titlebar-style = tabs
 theme = "TokyoNight"
 
 # Try to get sidekick focus and select issues under control
+# # Shift+drag always extends Ghostty's own selection, even though nvim/sidekick request
+# # mouse reporting and would otherwise swallow the drag.
 mouse-shift-capture = never
+
+# # Selection lands in the system clipboard right away, no Cmd+C needed. The default
+# # `true` prefers the selection clipboard, which macOS does not have.
+copy-on-select = clipboard
 
 # # The opacity level (opposite of transparency) of an unfocused split. Unfocused splits by default are slightly faded out to make it easier to see which split is focused. To disable this feature, set this value to 1.
 unfocused-split-opacity = 1.0

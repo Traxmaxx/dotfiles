@@ -62,6 +62,7 @@ dotfiles/
 │   ├── fontconfig/                # Font configuration
 │   ├── ghostty/                   # Ghostty terminal emulator
 │   ├── helix/                     # Helix editor config
+│   ├── herdr/                     # Herdr terminal workspace manager
 │   ├── i3/                        # i3 window manager config (Linux)
 │   ├── joplin-desktop/            # Joplin notes app styling
 │   ├── kitty/                     # Kitty terminal emulator config
