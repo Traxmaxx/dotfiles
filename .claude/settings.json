@@ -345,7 +345,7 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
-  "theme": "auto",
+  "theme": "custom:tokyo-night",
   "editorMode": "normal",
   "terminalProgressBarEnabled": false
 }
