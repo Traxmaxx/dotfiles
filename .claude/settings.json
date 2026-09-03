@@ -3,22 +3,18 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
     "CLAUDE_CODE_NO_FLICKER": "1",
-    "CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN": "1",
     "DISABLE_AUTOUPDATER": "1",
     "ENABLE_LSP_TOOL": "1",
-    "FORCE_AUTOUPDATE_PLUGINS": "1"
+    "FORCE_AUTOUPDATE_PLUGINS": "1",
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:8787/w/claude",
+    "_CLAUDE_CODE_ASSUME_FIRST_PARTY_BASE_URL": "1",
+    "ENABLE_TOOL_SEARCH": "auto"
   },
   "permissions": {
     "allow": [
       "Bash(npm run *)",
       "Bash(git log *)",
       "Bash(git diff *)",
-      "Bash(bd create:*)",
-      "Bash(bd update:*)",
-      "Bash(bd dep:*)",
-      "Bash(bd sync:*)",
-      "Bash(bd dep add:*)",
-      "Bash(bd list:*)"
     ],
     "deny": [
       "Bash(npx *)",
@@ -33,7 +29,9 @@
       "Read(**/.secrets*)",
       "Read(**/credentials/**)",
       "Read(**/.aws/**)",
+      "Read(~/.aws/**)",
       "Read(**/.ssh/**)",
+      "Read(~/.ssh/**)",
       "Read(**/docker-compose*.yml)",
       "Read(**/config/database.yml)",
       "Read(**/secrets.fish)"
@@ -43,54 +41,80 @@
   },
   "model": "opus[1m]",
   "hooks": {
-    "Notification": [
+    "SessionStart": [
       {
-        "matcher": "idle_prompt",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/hooks/herdr-agent-state.sh session",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
           }
         ]
-      },
+      }
+    ],
+    "UserPromptSubmit": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
           }
         ]
-      },
+      }
+    ],
+    "PreToolUse": [
       {
-        "matcher": "idle_prompt",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
+          },
+          {
+            "type": "command",
+            "command": "/opt/homebrew/bin/caveman shrink-hook"
           }
         ]
       }
     ],
     "PermissionRequest": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
           }
         ]
       }
@@ -101,7 +125,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
           }
         ]
       }
@@ -112,7 +144,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -122,168 +154,32 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
           }
         ]
       }
     ],
-    "PreCompact": [
+    "Notification": [
       {
+        "matcher": "idle_prompt",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
           }
         ]
       },
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10,
-            "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash '~/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
-            "timeout": 10,
-            "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      }
-    ],
-    "StopFailure": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
           }
         ]
       }
@@ -293,26 +189,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "matcher": "",
-        "hooks": [
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
           {
             "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
-          }
-        ]
-      },
-      {
-        "hooks": [
+          },
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
           }
         ]
       }
@@ -322,44 +209,92 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "hooks": [
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
           }
         ]
       }
     ],
-    "UserPromptSubmit": [
+    "Stop": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
-          }
-        ]
-      },
-      {
-        "matcher": "",
-        "hooks": [
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
           {
             "type": "command",
-            "command": "~/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
           }
         ]
-      },
+      }
+    ],
+    "StopFailure": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "~/.clawd-tank/clawd-tank-notify"
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.clawd-tank/clawd-tank-notify"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.clawd-tank/clawd-tank-notify",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.caveman/bin/caveman-proxy native-hook claude --adapter /opt/homebrew/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js",
+            "timeout": 10
           }
         ]
       }
@@ -373,6 +308,7 @@
     "church@church": true,
     "clangd-lsp@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
+    "datadog@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "github@claude-plugins-official": true,
@@ -383,10 +319,9 @@
     "pyright-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "ponytail@ponytail": true,
-    "datadog@claude-plugins-official": true,
     "caveman@caveman": true,
-    "humanizer@humanizer": true
+    "humanizer@humanizer": true,
+    "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
@@ -412,6 +347,5 @@
   "effortLevel": "high",
   "theme": "auto",
   "editorMode": "normal",
-  "terminalProgressBarEnabled": false,
-  "prompt": ""
+  "terminalProgressBarEnabled": false
 }
