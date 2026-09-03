@@ -1,5 +1,9 @@
 set -gx HOMEBREW_NO_ANALYTICS 1
 
+## Some parents (GUI apps, launchd, the Claude desktop app) start us with no locale,
+## which makes pagers print UTF-8 bytes as <E2><80><94>. Only fill the gap.
+set -q LANG; or set -gx LANG en_US.UTF-8
+
 ## Detect where we're running
 switch (uname)
     case Darwin
