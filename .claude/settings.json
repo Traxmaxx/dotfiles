@@ -14,7 +14,7 @@
     "allow": [
       "Bash(npm run *)",
       "Bash(git log *)",
-      "Bash(git diff *)",
+      "Bash(git diff *)"
     ],
     "deny": [
       "Bash(npx *)",
