@@ -1,5 +1,17 @@
 set -gx HOMEBREW_NO_ANALYTICS 1
 
+## Fish Pure Configuration section
+# check repo for new release (on every shell start)
+set --universal pure_check_for_new_release false
+# Container Detection (Docker)
+set --universal enable_container_detection false
+# Current Working Directory 
+set --universal pure_begin_prompt_with_current_directory true
+# Show virtual env name
+set --universal pure_enable_virtualenv true
+# Shows a simplified prompt (just the prompt symbol) for previous commands, keeping your scrollback clean
+set --universal fish_transient_prompt 1
+
 ## Some parents (GUI apps, launchd, the Claude desktop app) start us with no locale,
 ## which makes pagers print UTF-8 bytes as <E2><80><94>. Only fill the gap.
 set -q LANG; or set -gx LANG en_US.UTF-8
@@ -49,6 +61,9 @@ if test $is_macos
     else
         set _asdf_shims "$ASDF_DATA_DIR/shims"
     end
+
+    # ASDF Go needs to source this for Golang Env setup
+    source (echo $ASDF_DATA_DIR | if test -z $it; echo $HOME/.asdf; else echo $it; end)/plugins/golang/set-env.fish
 
     # Do not use fish_add_path (added in Fish 3.2) because it
     # potentially changes the order of items in PATH
