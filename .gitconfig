@@ -48,3 +48,5 @@
 	default = current
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true

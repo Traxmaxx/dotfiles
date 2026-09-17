@@ -321,17 +321,9 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "caveman@caveman": true,
-    "humanizer@humanizer": true,
-    "ponytail@ponytail": true,
-    "i-have-adhd@i-have-adhd": true
+    "humanizer@humanizer": true
   },
   "extraKnownMarketplaces": {
-    "ponytail": {
-      "source": {
-        "source": "github",
-        "repo": "DietrichGebert/ponytail"
-      }
-    },
     "caveman": {
       "source": {
         "source": "github",
@@ -343,14 +335,9 @@
         "source": "github",
         "repo": "blader/humanizer"
       }
-    },
-    "i-have-adhd": {
-      "source": {
-        "source": "github",
-        "repo": "ayghri/i-have-adhd"
-      }
     }
   },
+  "outputStyle": "ADHD + Lazy",
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "theme": "custom:tokyo-night",
