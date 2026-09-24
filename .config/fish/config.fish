@@ -3,6 +3,8 @@ export PATH="$PATH:/Users/alexrosel/.docker/bin"
 # End of Docker Desktop section.
 
 set -gx HOMEBREW_NO_ANALYTICS 1
+set -gx HOMEBREW_NO_ENV_HINTS 1
+set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
 ## Fish Pure Configuration section
 # check repo for new release (on every shell start)
