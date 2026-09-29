@@ -124,12 +124,6 @@ if test $is_linux
     end
 end
 
-# fzf setup.
-set -gx FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
---cycle --pointer=▎
---marker=▎ \
---bind=alt-s:toggle"
-
 ######################################################
 # Nothing to do if not inside an interactive shell.###
 # ####################################################
@@ -243,6 +237,13 @@ else
         --processes=\e\cp \
         --variables=\e\cv
 end
+
+# fzf tokyo night theme and default settings
+set -gx FZF_DEFAULT_OPTS '--multi --height=50% --layout=reverse --border --info=inline --prompt="$ " --pointer="> " --marker="*" --exit-0 --select-1
+  --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+  --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
+  --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
+  --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
 
 # fzf shell integration:
 fzf --fish | source
